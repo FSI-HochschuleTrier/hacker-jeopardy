@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) {{{2014}}} {{{Michael Ochmann}}}
+Copyright &copy; 2014 Michael Ochmann, Trier University of applied sciences
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
