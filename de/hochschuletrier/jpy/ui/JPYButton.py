@@ -46,9 +46,7 @@ class JPYButton(Frame):
         self.button["foreground"] = "#FFCC00"
         self.button["text"] = event.widget.master.questionText
         self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
-        print "[" + str(self.questionID[0]) + "][" + str(self.questionID[1]) + "]"
         self.master.root.questionManager.questionSet[self.questionID[0]][self.questionID[1]] = 0
-        print self.master.root.questionManager.questionSet
         self.master.after(1300, self.processOverlay)
 
     def processOverlay(self):
