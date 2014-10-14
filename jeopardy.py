@@ -10,13 +10,31 @@ from de.hochschuletrier.jpy.input.PseudoInputController import PseudoInputContro
 
 class Jeopardy:
     def __init__(self):
+        """
+        array = [
+            [1, 1, 1],
+            [2, 2, 2],
+            [3, 3, 3],
+        ]
+
+        temp = 0
+
+        print array
+        for x in range(0, len(array)):
+            for y in range(x+1, len(array)):
+                temp = array[y][x]
+                array[y][x] = array[x][y]
+                array[x][y] = temp
+
+        print array
+        """
         self.gameStarted = False
         self.mainWindow = MainWindow(self)
-        self.questionManager = QuestionManager("questions.json")
+        self.backupManager = BackupManager(self)
+        self.questionManager = QuestionManager(self, "questions.json")
         self.candidateManager = CandidateManager(self)
         self.gameStateManager = GameStateManager(self)
         self.inputController = PseudoInputController(self)
-        self.backupManager = BackupManager(self)
 
         self.mainWindow.mainloop()
 

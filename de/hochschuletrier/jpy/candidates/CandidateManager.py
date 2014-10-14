@@ -8,11 +8,11 @@ class CandidateManager:
         self.candidates = []
         self.maxCount = 4
         self.master = master
-        usebackup = True
+        usebackup = self.master.backupManager.usebackup
 
         if usebackup:
             print "lol"
-            backupHandle = JSONBackupHandler("backup.json")
+            backupHandle = JSONBackupHandler("candidates_backup.json")
             self.restoreCandidates(backupHandle.load())
         else:
             self.registerCandidates()
@@ -25,7 +25,7 @@ class CandidateManager:
         for candidate in data:
             self.candidates.append(Candidate(candidate["id"], candidate["name"], candidate["points"]))
 
-    def getSerializableDate(self):
+    def getSerializableData(self):
         output = []
         for candidate in self.candidates:
             output.append(SerializableCandidate(candidate.id, candidate.name.get(), candidate.points.get()))

@@ -23,11 +23,16 @@ class TableProcessor:
         for row in range(1, 6):
             for col in range(6):
                 values = [100, 200, 300, 400, 500, 600]
+                if self.root.questionManager.questionSet[col][row - 1] == 1:
+                    text = "$"+str(values[row])
+                else:
+                    text = ""
                 JPYButton(
                     self.parent,
                     question=self.root.questionManager.questions[self.root.questionManager.categories[col]][row-1],
-                    text="$"+str(values[row]),
+                    text=text,
                     worth=values[row],
+                    questionID=[col, row - 1],
                     borderwidth=1,
                 ).grid(row=row, column=col)
 
