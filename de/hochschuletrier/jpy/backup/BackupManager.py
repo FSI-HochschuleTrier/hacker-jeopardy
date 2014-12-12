@@ -5,8 +5,8 @@ from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 class BackupManager:
     def __init__(self, root):
         self.root = root
-        self.usebackup = True
-        self.dobackup = True
+        self.usebackup = False
+        self.dobackup = False
         self.logger = JPYLogger(self)
         self.fileName_candidates = "candidates_backup.json"
         self.fileName_questions = "questions_backup.json"

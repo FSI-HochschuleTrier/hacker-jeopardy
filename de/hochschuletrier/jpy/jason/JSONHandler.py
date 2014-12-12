@@ -15,8 +15,14 @@ class JSONHandler:
         for category in jsondata:
             self.categories.append(str(category.encode("utf-8")))
             self.questions[category] = []
+            # self.questions[category] = new Category("", "", "")
             for question in jsondata[category]:
                 self.questions[category].append(str(question.encode("utf-8")))
+                #category["type"] = "text"
+                #category["location"] = "/path/so/on"
+                #category["questions"] = ["dsdsd", "sdsdsdsd"]
+
+                #categories["maps"] = category
 
     def getCategories(self):
         return self.categories
