@@ -17,7 +17,7 @@ class TableProcessor:
 
     def buildTableHead(self):
         for header in range(6):
-            JPYLabel(self.parent, text=self.root.questionManager.categories[header]).grid(row=0, column=header)
+            JPYLabel(self.parent, text=self.root.questionManager.categories[header].name).grid(row=0, column=header)
 
     def buildTableBody(self):
         for row in range(1, 6):

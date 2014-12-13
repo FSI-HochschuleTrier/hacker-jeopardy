@@ -7,24 +7,112 @@
             "location": "/path/to/smth",
             "questions": [
                 "z1",
-                "q2"
+                "q2",
+                "ee",
+                "dd",
+                "dd"
             ],
             "answers": [
-                "a1",
-                "a2"
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
             ]
         },
-        {
-            "name": "Nougat",
-            "type": "image",
+                {
+            "name": "maps",
+            "type": "text",
             "location": "/path/to/smth",
             "questions": [
-                "dsdsd",
-                "sdsdsds"
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
             ],
             "answers": [
-                "sdsdsds",
-                "sdsdsdsd"
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ]
+        },
+                {
+            "name": "maps",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ],
+            "answers": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ]
+        },
+                {
+            "name": "maps",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ],
+            "answers": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ]
+        },
+                {
+            "name": "maps",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ],
+            "answers": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ]
+        },
+                {
+            "name": "maps",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
+            ],
+            "answers": [
+                "z1",
+                "q2",
+                "ee",
+                "dd",
+                "dd"
             ]
         }
     ]
