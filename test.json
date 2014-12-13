@@ -6,12 +6,12 @@
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
-                "dsdsd",
-                "sdsdsds"
+                "z1",
+                "q2"
             ],
             "answers": [
-                "sdsdsds",
-                "sdsdsdsd"
+                "a1",
+                "a2"
             ]
         },
         {

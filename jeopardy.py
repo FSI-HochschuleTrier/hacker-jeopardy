@@ -13,7 +13,8 @@ class Jeopardy:
         self.gameStarted = False
         self.mainWindow = MainWindow(self)
         self.backupManager = BackupManager(self)
-        self.questionManager = QuestionManager(self, "questions.json")
+        #self.questionManager = QuestionManager(self, "questions.json")
+        self.questionManager = QuestionManager(self, "test.json")
         self.candidateManager = CandidateManager(self)
         self.gameStateManager = GameStateManager(self)
         self.inputController = PseudoInputController(self)
