@@ -8,6 +8,7 @@ from de.hochschuletrier.jpy.jason.JSONHandler import JSONHandler
 class TableProcessor:
     cols = 6
     rows = 6
+
     def __init__(self, parent, root, questionset):
         self.root = root
         self.parent = parent
@@ -24,12 +25,13 @@ class TableProcessor:
             for col in range(6):
                 values = [100, 200, 300, 400, 500, 600]
                 if self.root.questionManager.questionSet[col][row - 1] == 1:
-                    text = "$"+str(values[row])
+                    text = str((row - 1) * 6 + col)  # "$"+str(values[row])
                 else:
                     text = ""
                 JPYButton(
                     self.parent,
-                    question=self.root.questionManager.questions[self.root.questionManager.categories[col].name][row-1],
+                    question=self.root.questionManager.questions[self.root.questionManager.categories[col].name][
+                        row - 1],
                     text=text,
                     worth=values[row],
                     questionID=[col, row - 1],
@@ -48,4 +50,5 @@ class TableProcessor:
 
         if span == 1:
             for empty in range(6 - len(self.root.candidateManager.candidates)):
-                JPYLabel(self.parent, background="black", text="").grid(row=6, column=len(self.root.candidateManager.candidates)+ empty)
+                JPYLabel(self.parent, background="black", text="").grid(row=6, column=len(
+                    self.root.candidateManager.candidates) + empty)
