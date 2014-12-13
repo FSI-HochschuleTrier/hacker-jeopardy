@@ -3,9 +3,10 @@ from Tkinter import StringVar, IntVar
 
 
 class Candidate(object):
-    def __init__(self, id, name="", points=0):
+    def __init__(self, id, color, name="", points=0):
         self.name = StringVar()
         self.points = IntVar()
+        self.color = color
         self.id = id
         if points != 0:
             self.points.set(points)

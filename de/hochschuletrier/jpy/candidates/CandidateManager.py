@@ -1,6 +1,7 @@
 __author__ = 'miko'
 from de.hochschuletrier.jpy.candidates.Candidate import Candidate, SerializableCandidate
 from de.hochschuletrier.jpy.jason.JSONBackupHandler import JSONBackupHandler
+from de.hochschuletrier.jpy.Constants import Constants
 
 
 class CandidateManager:
@@ -18,8 +19,9 @@ class CandidateManager:
             self.registerCandidates()
 
     def registerCandidates(self):
+        colors = Constants.COLORS
         for candidate in range(0, self.maxCount):
-            self.candidates.append(Candidate(candidate))
+            self.candidates.append(Candidate(candidate, colors[candidate]))
 
     def restoreCandidates(self, data):
         for candidate in data:

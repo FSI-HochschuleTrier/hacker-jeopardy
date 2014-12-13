@@ -5,6 +5,7 @@ from tkFont import Font
 class Constants:
     SCREENW = 0
     SCREENH = 0
+    COLORS = ["red", "green", "purple", "brown", "black", "yellow"]
 
 
 class Fonts:

@@ -1,0 +1,31 @@
+{
+    "double": 15,
+    "categories": [
+        {
+            "name": "maps",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "dsdsd",
+                "sdsdsds"
+            ],
+            "answers": [
+                "sdsdsds",
+                "sdsdsdsd"
+            ]
+        },
+        {
+            "name": "Nougat",
+            "type": "image",
+            "location": "/path/to/smth",
+            "questions": [
+                "dsdsd",
+                "sdsdsds"
+            ],
+            "answers": [
+                "sdsdsds",
+                "sdsdsdsd"
+            ]
+        }
+    ]
+}

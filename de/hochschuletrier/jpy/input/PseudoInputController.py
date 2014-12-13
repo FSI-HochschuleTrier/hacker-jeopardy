@@ -47,6 +47,7 @@ class PseudoInputController:
             return
         else:
             self.root.questionManager.candidate = self.root.candidateManager.candidates[trigger]
+            self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
             self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
             self.blockBuzzer = True
 

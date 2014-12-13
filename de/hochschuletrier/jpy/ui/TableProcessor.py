@@ -37,13 +37,12 @@ class TableProcessor:
                 ).grid(row=row, column=col)
 
     def buildCandidates(self):
-        colors = ["red", "green", "purple", "brown", "black", "yellow"]
         col = 0
         max = len(self.root.candidateManager.candidates)
         span = int(round(6 / max))
 
         for candidate in self.root.candidateManager.candidates:
-            cLabel = JPYUserLabel(self.parent, back=colors[candidate.id], user=candidate)
+            cLabel = JPYUserLabel(self.parent, back=candidate.color, user=candidate)
             cLabel.grid(row=6, column=col, columnspan=span)
             col += span
 
