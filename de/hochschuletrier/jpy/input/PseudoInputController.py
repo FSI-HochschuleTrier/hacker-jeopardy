@@ -47,7 +47,8 @@ class PseudoInputController:
             return
         else:
             self.root.questionManager.candidate = self.root.candidateManager.candidates[trigger]
-            self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
+            #self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
+            self.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(self.root.questionManager.candidate.color)
             self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
             self.blockBuzzer = True
 
@@ -65,9 +66,12 @@ class PseudoInputController:
         if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
             return
         if self.root.questionManager.candidate is None:
+            self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
             return
         self.root.questionManager.candidate.subPoints(self.root.questionManager.worth)
-        self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
+        self.root.questionManager.candidate = None
+        self.root.gameStateManager.states[1].overlayManager.overlays[0].normalize()
+        #self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
         self.blockBuzzer = False
 
     def addPoints(self, event):

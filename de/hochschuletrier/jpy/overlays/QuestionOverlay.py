@@ -23,6 +23,14 @@ class QuestionOverlay(Overlay):
         )
         self.label.place(relwidth=1, relheight=1)
 
+    def highlight(self, color):
+        self.config(background=color)
+        self.label.config(background=color)
+
+    def normalize(self):
+        self.config(background="blue")
+        self.label.config(background="blue")
+
     def hide(self, event):
         Overlay.hide(self, event)
-        self.root.root.questionManager.candidate = None
+        self.normalize()

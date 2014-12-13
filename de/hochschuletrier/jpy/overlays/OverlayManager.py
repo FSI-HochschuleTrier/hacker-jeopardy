@@ -1,7 +1,6 @@
 __author__ = 'miko'
 from de.hochschuletrier.jpy.overlays.QuestionOverlay import QuestionOverlay
 from de.hochschuletrier.jpy.overlays.UsernameOverlay import UsernameOverlay
-from de.hochschuletrier.jpy.overlays.BuzzerOverlay import BuzzerOverlay
 
 
 class OverlayManager:
@@ -15,7 +14,6 @@ class OverlayManager:
     def generateOverlays(self):
         self.overlays.append(QuestionOverlay(self.root, overlayName="Frage", id=0))
         self.overlays.append(UsernameOverlay(self.root, overlayName="Username", id=1))
-        self.overlays.append(BuzzerOverlay(self.root, overlayName="Buzz", id=2, color="orange"))
 
         for overlay in self.overlays:
             overlay.lower()
