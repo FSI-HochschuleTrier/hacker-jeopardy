@@ -12,7 +12,6 @@ class JSONHandler:
     def __init__(self, file):
         self.categories = []
         self.file = file
-        self.questions = dict()
         with open(JSONHandler.filepath + self.file) as data_file:
             jsondata = json.load(data_file, object_pairs_hook=OrderedDict)
         print(jsondata)
@@ -20,8 +19,8 @@ class JSONHandler:
         self.double = jsondata["double"]
         print("double: " + str(self.double))
 
-        categories = jsondata["categories"]
-        for cat in categories:
+        cats = jsondata["categories"]
+        for cat in cats:
             tempcat = Category(cat["name"], cat["type"], cat["location"])
 
             for i in range(len(cat["questions"])):

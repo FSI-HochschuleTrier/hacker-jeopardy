@@ -2,7 +2,7 @@
     "double": 15,
     "categories": [
         {
-            "name": "maps",
+            "name": "maps1",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
@@ -21,7 +21,7 @@
             ]
         },
                 {
-            "name": "maps",
+            "name": "maps2",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
@@ -40,7 +40,7 @@
             ]
         },
                 {
-            "name": "maps",
+            "name": "maps3",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
@@ -59,7 +59,7 @@
             ]
         },
                 {
-            "name": "maps",
+            "name": "maps4",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
@@ -78,7 +78,7 @@
             ]
         },
                 {
-            "name": "maps",
+            "name": "maps5",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
@@ -97,7 +97,7 @@
             ]
         },
                 {
-            "name": "maps",
+            "name": "maps6",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [

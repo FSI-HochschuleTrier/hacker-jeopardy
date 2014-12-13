@@ -29,7 +29,7 @@ class TableProcessor:
                     text = ""
                 JPYButton(
                     self.parent,
-                    question=self.root.questionManager.questions[self.root.questionManager.categories[col]][row-1],
+                    question=self.root.questionManager.questions[self.root.questionManager.categories[col].name][row-1],
                     text=text,
                     worth=values[row],
                     questionID=[col, row - 1],

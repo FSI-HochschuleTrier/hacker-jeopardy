@@ -23,8 +23,9 @@ class QuestionManager:
 
     def requestData(self):
         jsonHandle = JSONHandler(self.questionset)
-        self.questions = jsonHandle.getQuestions()
         self.categories = jsonHandle.getCategories()
+        for cat in self.categories:
+            self.questions[cat.name] = cat.questions
 
     def restoreQuestionSet(self, data):
         self.questionSet = data
