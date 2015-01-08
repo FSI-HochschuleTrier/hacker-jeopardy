@@ -15,12 +15,12 @@ class AudioManager:
 
     def playBackgroundSong(self):
         self.player.loadfile('resources/Jeopardy.ogg')
-        self.player.pause()
+        #self.player.pause()
 
     def resumeBackgroundSong(self):
         if self.player.filename != 'Jeopardy.ogg':
             self.player.loadfile('resources/Jeopardy.ogg')
-        self.player.pause()
+        #self.player.pause()
 
     def pause(self):
         self.player.pause()
