@@ -51,6 +51,7 @@ class PseudoInputController:
             self.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(self.root.questionManager.candidate.color)
             self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
             self.blockBuzzer = True
+            self.root.audioManager.pause()
 
     def endProgram(self, event):
         if self.root.gameStateManager.activeState == 0:
@@ -67,12 +68,14 @@ class PseudoInputController:
             return
         if self.root.questionManager.candidate is None:
             self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
+            self.root.audioManager.stop()
             return
         self.root.questionManager.candidate.subPoints(self.root.questionManager.worth)
         self.root.questionManager.candidate = None
         self.root.gameStateManager.states[1].overlayManager.overlays[0].normalize()
         #self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
         self.blockBuzzer = False
+        self.root.audioManager.resumeBackgroundSong()
 
     def addPoints(self, event):
         if self.root.gameStateManager.activeState != 1:
@@ -82,5 +85,7 @@ class PseudoInputController:
         if self.root.questionManager.candidate is None:
             return
         self.root.questionManager.candidate.addPoints(self.root.questionManager.worth)
+        self.root.questionManager.candidate = None
         self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
         self.blockBuzzer = False
+        self.root.audioManager.stop()
