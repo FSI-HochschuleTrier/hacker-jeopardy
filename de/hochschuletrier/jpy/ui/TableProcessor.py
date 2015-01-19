@@ -25,7 +25,8 @@ class TableProcessor:
             for col in range(6):
                 values = [100, 200, 300, 400, 500, 600]
                 if self.root.questionManager.questionSet[col][row - 1] == 1:
-                    text = str((row - 1) * 6 + col)  # "$"+str(values[row])
+                    text = "$" + str(values[row])
+                    # text = str((row - 1) * 6 + col)
                 else:
                     text = ""
                 JPYButton(
