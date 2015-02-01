@@ -2,11 +2,11 @@
     "double": [15, 2],
     "categories": [
         {
-            "name": "maps1",
+            "name": "nougat",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [
-                "z1",
+                "image",
                 "q2",
                 "ee",
                 "dd",
@@ -21,7 +21,7 @@
             ]
         },
                 {
-            "name": "maps2",
+            "name": "perl",
             "type": "text",
             "location": "/path/to/smth",
             "questions": [

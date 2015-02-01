@@ -4,8 +4,8 @@ from Tkinter import *
 from tkFont import Font
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 
-class JPYButton(Frame):
 
+class JPYButton(Frame):
     def __init__(self, *args, **kwargs):
         Frame.__init__(self, *args)
         self.text = kwargs['text']
@@ -49,8 +49,14 @@ class JPYButton(Frame):
         self.button["foreground"] = "#FFCC00"
         self.button["text"] = event.widget.master.questionText
         self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
+        if event.widget.master.questionText == "image":
+            self.master.overlayManager.overlays[0].setimage("url")
+        else:
+            self.master.overlayManager.overlays[0].delimage()
         self.master.root.questionManager.questionSet[self.questionID[0]][self.questionID[1]] = 0
         self.master.after(1300, self.processOverlay)
+        if not self.master.root.audioManager.playingBackground():
+            self.master.root.audioManager.playBackgroundSong()
 
     def processOverlay(self):
         self.button["text"] = ""

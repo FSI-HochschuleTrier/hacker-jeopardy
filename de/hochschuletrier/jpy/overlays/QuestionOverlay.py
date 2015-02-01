@@ -2,6 +2,7 @@ __author__ = 'miko'
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 from Tkinter import Label
+from PIL import Image, ImageTk
 
 
 class QuestionOverlay(Overlay):
@@ -21,16 +22,30 @@ class QuestionOverlay(Overlay):
             foreground="white",
             wraplength=Constants.SCREENW * 0.8
         )
+
         self.label.place(relwidth=1, relheight=1)
 
     def highlight(self, color):
         self.config(background=color)
         self.label.config(background=color)
+        return
 
     def normalize(self):
         self.config(background="blue")
         self.label.config(background="blue")
+        return
 
     def hide(self, event):
         Overlay.hide(self, event)
         self.normalize()
+
+    def setimage(self, url):
+        # Todo: url
+        url = 'resources/20140312_153545.jpg'
+        img = Image.open(url)
+        self.img = img.resize((1280, 720))
+        self.image = ImageTk.PhotoImage(self.img)
+        self.label.config(image=self.image)
+
+    def delimage(self):
+        self.drawLabel()

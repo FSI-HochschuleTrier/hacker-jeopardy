@@ -8,6 +8,7 @@ class Overlay(Frame):
         self.root = args[0]
         self.id = kwargs["id"]
         self.text = StringVar()
+        self.image = None
         self.isVisible = False
         Frame.__init__(self, self.root)
         self.config(
@@ -22,3 +23,4 @@ class Overlay(Frame):
     def hide(self, event):
         self.lower()
         self.isVisible = False
+
