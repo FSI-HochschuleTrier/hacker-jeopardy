@@ -10,6 +10,7 @@ class JPYButton(Frame):
         Frame.__init__(self, *args)
         self.text = kwargs['text']
         self.button = ""
+        self.double = kwargs["double"]
         self.questionText = kwargs['question']
         self.worth = int(kwargs['worth'])
         self.font = Fonts.MONEY_BIG
@@ -41,6 +42,8 @@ class JPYButton(Frame):
     def activateQuestion(self, event):
         if not self.master.root.gameStarted:
             return
+        if self.double:
+            print("double!!!!")
         self.master.root.questionManager.worth = self.worth
         self.button["font"] = self.font2
         self.button["foreground"] = "#FFCC00"

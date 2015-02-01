@@ -1,5 +1,5 @@
 {
-    "double": 15,
+    "double": [15, 2],
     "categories": [
         {
             "name": "maps1",

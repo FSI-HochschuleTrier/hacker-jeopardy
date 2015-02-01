@@ -8,6 +8,7 @@ class QuestionManager:
         self.master = master
         self.questionset = questionset
         self.questions = {}
+        self.double = []
         self.questionSet = []
         self.categories = []
         self.candidate = None
@@ -23,6 +24,7 @@ class QuestionManager:
 
     def requestData(self):
         jsonHandle = JSONHandler(self.questionset)
+        self.double = jsonHandle.double
         self.categories = jsonHandle.getCategories()
         for cat in self.categories:
             self.questions[cat.name] = cat.questions

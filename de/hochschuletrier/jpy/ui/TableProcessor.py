@@ -24,6 +24,7 @@ class TableProcessor:
         for row in range(1, 6):
             for col in range(6):
                 values = [100, 200, 300, 400, 500, 600]
+                count = (row - 1) * 6 + col
                 if self.root.questionManager.questionSet[col][row - 1] == 1:
                     text = str((row - 1) * 6 + col)  # "$"+str(values[row])
                 else:
@@ -33,6 +34,7 @@ class TableProcessor:
                     question=self.root.questionManager.questions[self.root.questionManager.categories[col].name][
                         row - 1],
                     text=text,
+                    double=(True if count in self.root.questionManager.double else False),
                     worth=values[row],
                     questionID=[col, row - 1],
                     borderwidth=1,
