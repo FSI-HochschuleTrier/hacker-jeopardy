@@ -1,7 +1,7 @@
 __author__ = 'miko'
 import sys
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
-from de.hochschuletrier.jpy.input import InputController
+from de.hochschuletrier.jpy.input.InputController import InputController
 #import RPIO
 
 
