@@ -1,12 +1,11 @@
 __author__ = 'miko'
 import sys
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
-from de.hochschuletrier.jpy.input import InputController
+from de.hochschuletrier.jpy.input.InputController import InputController
 
 
 class PseudoInputController(InputController):
-    def __init__(self, root):
-        self.root = root
+    def __init__(self,root):
         self.logger = JPYLogger(self)
         self.logger.log("PseudoInputController initialisiert")
         self.blockBuzzer = False

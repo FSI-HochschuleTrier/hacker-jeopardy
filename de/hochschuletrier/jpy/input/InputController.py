@@ -3,7 +3,7 @@ import sys
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 
 
-class PseudoInputController:
+class InputController:
     def __init__(self, root):
         self.root = root
         self.logger = JPYLogger(self)
