@@ -2,7 +2,7 @@ __author__ = 'miko'
 import sys
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 from de.hochschuletrier.jpy.input.InputController import InputController
-#import RPIO
+import RPIO
 
 
 class BuzzerInputController(InputController):
@@ -13,4 +13,4 @@ class BuzzerInputController(InputController):
         self.blockBuzzer = False
         mainWindow = root.mainWindow
 
-        #RPIO.add_interrupt_callback(18, lambda event: self.pressedBuzzer(event, 0), edge='rising', pull_up_down=RPIO.PUD_UP)
+        RPIO.add_interrupt_callback(18, lambda event: self.pressedBuzzer(event, 0), edge='rising', pull_up_down=RPIO.PUD_UP)
