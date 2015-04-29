@@ -10,7 +10,7 @@ class AudioManager:
 
     def playFile(self, url):
         self.player.loadfile(url)
-        self.player.pause()
+        #self.player.pause()
 
     def playBackgroundSong(self):
         self.playFile('resources/Jeopardy.ogg')

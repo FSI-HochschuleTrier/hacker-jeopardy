@@ -13,4 +13,5 @@ class BuzzerInputController(InputController):
         self.blockBuzzer = False
         mainWindow = root.mainWindow
 
-        RPIO.add_interrupt_callback(18, lambda event: self.pressedBuzzer(event, 0), edge='rising', pull_up_down=RPIO.PUD_UP)
+        RPIO.add_interrupt_callback(18, self.pressedBuzzer(event=None, trigger=0), edge='rising',
+                                    pull_up_down=RPIO.PUD_UP)
