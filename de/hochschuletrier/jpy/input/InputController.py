@@ -23,7 +23,9 @@ class InputController:
         self.root.gameStateManager.states[1].overlayManager.overlays[1].user = self.root.candidateManager.candidates[trigger]
         self.root.gameStateManager.states[1].overlayManager.showOverlay(1)
 
-    def pressedBuzzer(self, event, trigger):
+    # warum ist hier das argument event?
+    # def pressedBuzzer(self, event, trigger):
+    def pressedBuzzer(self, trigger):
         if self.blockBuzzer:
             return
         if self.root.gameStateManager.activeState == 0:
