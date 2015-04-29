@@ -15,4 +15,4 @@ class BuzzerInputController(InputController):
 
         RPIO.add_interrupt_callback(18, self.pressedBuzzer(event=None, trigger=0), edge='rising',
                                     pull_up_down=RPIO.PUD_UP)
-        RPIO.wait_for_interrupts(threaded=False)
+        RPIO.wait_for_interrupts(threaded=True)
