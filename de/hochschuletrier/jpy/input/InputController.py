@@ -19,13 +19,16 @@ class InputController:
     def userName(self, trigger):
         if self.root.gameStateManager.activeState != 1:
             return
-        self.root.gameStateManager.states[1].overlayManager.overlays[1].insert(self.root.candidateManager.candidates[trigger])
-        self.root.gameStateManager.states[1].overlayManager.overlays[1].user = self.root.candidateManager.candidates[trigger]
+        self.root.gameStateManager.states[1].overlayManager.overlays[1].insert(
+            self.root.candidateManager.candidates[trigger])
+        self.root.gameStateManager.states[1].overlayManager.overlays[1].user = self.root.candidateManager.candidates[
+            trigger]
         self.root.gameStateManager.states[1].overlayManager.showOverlay(1)
 
     # warum ist hier das argument event?
     # def pressedBuzzer(self, event, trigger):
     def pressedBuzzer(self, trigger):
+        print 'blocked=', self.blockBuzzer
         if self.blockBuzzer:
             return
         if self.root.gameStateManager.activeState == 0:
@@ -39,8 +42,9 @@ class InputController:
             return
         else:
             self.root.questionManager.candidate = self.root.candidateManager.candidates[trigger]
-            #self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
-            self.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(self.root.questionManager.candidate.color)
+            # self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
+            self.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(
+                self.root.questionManager.candidate.color)
             self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
             self.blockBuzzer = True
             self.root.audioManager.pause()
@@ -65,7 +69,7 @@ class InputController:
         self.root.questionManager.candidate.subPoints(self.root.questionManager.worth)
         self.root.questionManager.candidate = None
         self.root.gameStateManager.states[1].overlayManager.overlays[0].normalize()
-        #self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
+        # self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
         self.blockBuzzer = False
         self.root.audioManager.resumeBackgroundSong()
 
