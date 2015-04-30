@@ -51,8 +51,8 @@
                 "Ox63"
             ],
             "answers": [
-                "Ä in morse",
-                "tml Entitaet für AE",
+                "AE in morse",
+                "html Entitaet für AE",
                 "latin1",
                 "UTF8",
                 "ebcdic"
