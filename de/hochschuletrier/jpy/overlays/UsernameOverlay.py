@@ -1,3 +1,5 @@
+from de.hochschuletrier.jpy.input.InputController import InputController
+
 __author__ = 'miko'
 from de.hochschuletrier.jpy.Constants import Fonts
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
@@ -58,7 +60,7 @@ class UsernameOverlay(Overlay):
         self.logger.prompt("User " + str(self.user.id) + " changed name from '" + self.user.name.get() + "' to '" + self.field.get() + "'")
         self.user.name.set(self.field.get())
         self.hide(self)
-        self.root.root.inputController.blockBuzzer = False
+        InputController.blockBuzzer = False
 
     def insert(self, user):
         self.field.delete(0, END)
