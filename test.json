@@ -64,8 +64,8 @@
             "location": "/path/to/smth",
             "questions": [
                 "\"fuer ... seine entdeckung des gesetzes des photoelektrischen effekts\"",
-                "fuer \"... die charakterisierung des radiums und dessen isolierung in metallischen zustand und durch ihre untersuchungen über die natur und die chemischen verbindungen dieses wichtigen elements\"",
-                "\"... für die theoretische Entdeckung eines Mechanismus, ... der kuerzlich ... am Large Hadron Collider des CERN bestaetigt wurde\"",
+                "fuer \"... die charakterisierung des radiums und dessen isolierung in metallischen zustand und durch ihre untersuchungen ueber die natur und die chemischen verbindungen dieses wichtigen elements\"",
+                "\"... fuer die theoretische Entdeckung eines Mechanismus, ... der kuerzlich ... am Large Hadron Collider des CERN bestaetigt wurde\"",
                 "\"fuer ... die Entdeckung der Energiequanten\"",
                 "\"fuer die Begruendung der Quantenmechanik\""
             ],
@@ -86,7 +86,7 @@
                 "#00ffff",
                 "<font color=#fefe> erzeugt diese farbe",
                 "Diese Firma ist #E20074 - Farben",
-                "Diese Farbe erhält man mit <font color=chucknorris>"
+                "Diese Farbe erhaelt man mit <font color=chucknorris>"
             ],
             "answers": [
                 "gruen",
