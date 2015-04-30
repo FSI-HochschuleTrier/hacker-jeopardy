@@ -7,7 +7,7 @@ from de.hochschuletrier.jpy.Constants import Constants
 class CandidateManager:
     def __init__(self, master):
         self.candidates = []
-        self.maxCount = 4
+        self.maxCount = 2
         self.master = master
         usebackup = self.master.backupManager.usebackup
 
