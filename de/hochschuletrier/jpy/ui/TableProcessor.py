@@ -2,6 +2,7 @@ __author__ = 'miko'
 from de.hochschuletrier.jpy.ui.JPYLabel import JPYLabel
 from de.hochschuletrier.jpy.ui.JPYUserLabel import JPYUserLabel
 from de.hochschuletrier.jpy.ui.JPYButton import JPYButton
+from math import ceil
 from de.hochschuletrier.jpy.jason.JSONHandler import JSONHandler
 
 
@@ -26,7 +27,7 @@ class TableProcessor:
                 values = [100, 200, 300, 400, 500, 600]
                 count = (row - 1) * 6 + col
                 if self.root.questionManager.questionSet[col][row - 1] == 1:
-                    text = "$" + str(values[row])
+                    text = "$" + str(values[row-1])
                     # text = str((row - 1) * 6 + col)
                 else:
                     text = ""
@@ -36,7 +37,7 @@ class TableProcessor:
                         row - 1],
                     text=text,
                     double=(True if count in self.root.questionManager.double else False),
-                    worth=values[row],
+                    worth=values[row-1],
                     questionID=[col, row - 1],
                     borderwidth=1,
                 ).grid(row=row, column=col)
@@ -44,7 +45,7 @@ class TableProcessor:
     def buildCandidates(self):
         col = 0
         max = len(self.root.candidateManager.candidates)
-        span = int(round(6 / max))
+        span = int(ceil(6 / max))
 
         for candidate in self.root.candidateManager.candidates:
             cLabel = JPYUserLabel(self.parent, back=candidate.color, user=candidate)
