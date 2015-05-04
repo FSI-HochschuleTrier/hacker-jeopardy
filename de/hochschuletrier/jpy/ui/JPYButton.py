@@ -12,6 +12,7 @@ class JPYButton(Frame):
         self.button = ""
         self.double = kwargs["double"]
         self.questionText = kwargs['question']
+        self.category = kwargs['category']
         self.worth = int(kwargs['worth'])
         self.font = Fonts.MONEY_BIG
         self.font2 = Fonts.MONEY_SMALL
@@ -49,7 +50,9 @@ class JPYButton(Frame):
         self.button["foreground"] = "#FFCC00"
         self.button["text"] = event.widget.master.questionText
         self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
-        if event.widget.master.questionText == "image":
+        if self.category == "image":
+            self.master.overlayManager.overlays[0].setimage("url")
+        elif event.widget.master.questionText == "image":
             self.master.overlayManager.overlays[0].setimage("url")
         else:
             self.master.overlayManager.overlays[0].delimage()
