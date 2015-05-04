@@ -9,7 +9,7 @@ class TableProcessor:
     cols = 6
     rows = 6
 
-    def __init__(self, parent, root, questionset):
+    def __init__(self, parent, root):
         self.root = root
         self.parent = parent
         self.buildTableHead()

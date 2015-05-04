@@ -6,5 +6,5 @@ from de.hochschuletrier.jpy.overlays.OverlayManager import OverlayManager
 class PlayGameState(GameState):
     def __init__(self, *args, **kwargs):
         GameState.__init__(self, *args, **kwargs)
-        TableProcessor(self, self.root, "questions.json")
+        TableProcessor(self, self.root)
         self.overlayManager = OverlayManager(self)
