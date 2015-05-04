@@ -8,4 +8,4 @@ class Category:
 
     def addQuestion(self, question, answer):
         self.questions.append(str(question))
-        self.questions.append(str(answer))
+        self.answers.append(str(answer))
