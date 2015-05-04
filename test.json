@@ -22,7 +22,7 @@
         },
                 {
             "name": "commands",
-            "type": "text",
+            "type": "image",
             "location": "/path/to/smth",
             "questions": [
                 "katzenfoto",
