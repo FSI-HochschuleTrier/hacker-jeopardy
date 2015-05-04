@@ -50,9 +50,8 @@ class JPYButton(Frame):
         self.button["foreground"] = "#FFCC00"
         self.button["text"] = event.widget.master.questionText
         self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
-        if self.category == "image":
-            self.master.overlayManager.overlays[0].setimage("url")
-        elif event.widget.master.questionText == "image":
+        print event.widget.master.category
+        if event.widget.master.category == "image":
             self.master.overlayManager.overlays[0].setimage("url")
         else:
             self.master.overlayManager.overlays[0].delimage()

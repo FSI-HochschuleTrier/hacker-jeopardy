@@ -39,7 +39,7 @@ class TableProcessor:
                     worth=values[row],
                     questionID=[col, row - 1],
                     borderwidth=1,
-                    category=self.root.questionManager.categories[col].name,
+                    category=self.root.questionManager.categories[col].type,
                 ).grid(row=row, column=col)
 
     def buildCandidates(self):
