@@ -48,11 +48,13 @@ class JPYButton(Frame):
         self.master.root.questionManager.worth = self.worth
         self.button["font"] = self.font2
         self.button["foreground"] = "#FFCC00"
-        self.button["text"] = event.widget.master.questionText
+        questionText = event.widget.master.questionText
+        self.button["text"] = questionText
         self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
         print event.widget.master.category
         if event.widget.master.category == "image":
-            self.master.overlayManager.overlays[0].setimage("url")
+            directory = self.master.root.questionManager.questiondir
+            self.master.overlayManager.overlays[0].setimage("questions/" + directory + "/" + questionText)
         else:
             self.master.overlayManager.overlays[0].delimage()
         self.master.root.questionManager.questionSet[self.questionID[0]][self.questionID[1]] = 0

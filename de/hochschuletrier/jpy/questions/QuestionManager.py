@@ -4,9 +4,9 @@ from de.hochschuletrier.jpy.jason.JSONBackupHandler import JSONBackupHandler
 
 
 class QuestionManager:
-    def __init__(self, master, questionset):
+    def __init__(self, master, questiondir):
         self.master = master
-        self.questionset = questionset
+        self.questiondir = questiondir
         self.questions = {}
         self.double = []
         self.questionSet = []
@@ -23,7 +23,7 @@ class QuestionManager:
             self.initQuestionSet()
 
     def requestData(self):
-        jsonHandle = JSONHandler(self.questionset)
+        jsonHandle = JSONHandler("questions/" + self.questiondir + "/questions.json")
         self.double = jsonHandle.double
         self.categories = jsonHandle.getCategories()
         for cat in self.categories:

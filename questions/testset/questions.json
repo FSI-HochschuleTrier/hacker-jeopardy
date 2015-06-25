@@ -25,11 +25,11 @@
             "type": "image",
             "location": "/path/to/smth",
             "questions": [
-                "katzenfoto",
-                "katzenfoto",
-                "katzenfoto",
-                "katzenfoto",
-                "katzenfoto"
+                "boot.jpg",
+                "boot.jpg",
+                "boot.jpg",
+                "boot.jpg",
+                "boot.jpg"
             ],
             "answers": [
                 "cat",

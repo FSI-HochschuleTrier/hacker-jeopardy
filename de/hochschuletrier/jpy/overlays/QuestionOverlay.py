@@ -42,7 +42,7 @@ class QuestionOverlay(Overlay):
     def setimage(self, url):
         # Todo: url
         # url = 'resources/20140312_153545.jpg'
-        url = 'resources/boot.jpg'
+        # url = 'resources/boot.jpg'
         img = Image.open(url)
         self.img = img.resize((1280, 720))
         self.image = ImageTk.PhotoImage(self.img)

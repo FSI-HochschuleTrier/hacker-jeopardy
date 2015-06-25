@@ -1,5 +1,6 @@
 __author__ = 'MikO'
 
+import sys
 from de.hochschuletrier.jpy.states.GameStateManager import GameStateManager
 from de.hochschuletrier.jpy.candidates.CandidateManager import CandidateManager
 from de.hochschuletrier.jpy.questions.QuestionManager import QuestionManager
@@ -11,12 +12,12 @@ from de.hochschuletrier.jpy.audio.AudioManager import AudioManager
 
 
 class Jeopardy:
-    def __init__(self):
+    def __init__(self, questiondir):
         self.gameStarted = False
         self.mainWindow = MainWindow(self)
         self.backupManager = BackupManager(self)
         # self.questionManager = QuestionManager(self, "questions.json")
-        self.questionManager = QuestionManager(self, "test.json")
+        self.questionManager = QuestionManager(self, questiondir)
         self.candidateManager = CandidateManager(self)
         self.gameStateManager = GameStateManager(self)
         self.inputController = PseudoInputController(self)
@@ -26,9 +27,9 @@ class Jeopardy:
         self.mainWindow.mainloop()
 
 
-def main():
-    main = Jeopardy()
+def main(argv):
+    main = Jeopardy(argv[1])
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
