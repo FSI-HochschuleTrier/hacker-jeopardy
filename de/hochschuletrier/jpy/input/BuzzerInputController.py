@@ -16,7 +16,7 @@ class BuzzerInputController(InputController):
                                     pull_up_down=RPIO.PUD_UP)
         RPIO.add_interrupt_callback(8, lambda x, y: self.pressedBuzzer(trigger=1), edge='rising',
                                     pull_up_down=RPIO.PUD_UP)
-        RPIO.add_interrupt_callback(7, lambda x, y: self.pressedBuzzer(trigger=1), edge='rising',
+        RPIO.add_interrupt_callback(7, lambda x, y: self.pressedBuzzer(trigger=2), edge='rising',
                             pull_up_down=RPIO.PUD_UP)
 
         RPIO.wait_for_interrupts(threaded=True)
