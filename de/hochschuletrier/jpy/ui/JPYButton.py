@@ -53,6 +53,7 @@ class JPYButton(Frame):
         self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
         print event.widget.master.category
         if event.widget.master.category == "image":
+            self.button["text"] = "Bild"
             directory = self.master.root.questionManager.questiondir
             self.master.overlayManager.overlays[0].setimage("questions/" + directory + "/" + questionText)
         else:
