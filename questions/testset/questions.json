@@ -21,15 +21,15 @@
             ]
         },
                 {
-            "name": "commands",
+            "name": "My Computer",
             "type": "image",
             "location": "/path/to/smth",
             "questions": [
-                "boot.jpg",
-                "boot.jpg",
-                "boot.jpg",
-                "boot.jpg",
-                "boot.jpg"
+                "1_win10_my_computer.png",
+                "2_win7_my_computer.png",
+                "3_winxp_my_computer.png",
+                "4_win95_my_computer.png",
+                "5_win98_my_computer.png"
             ],
             "answers": [
                 "cat",
