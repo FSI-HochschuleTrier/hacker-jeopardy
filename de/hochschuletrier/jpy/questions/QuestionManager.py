@@ -9,6 +9,7 @@ class QuestionManager:
         self.questiondir = questiondir
         self.questions = {}
         self.double = []
+        self.toggledouble = False
         self.questionSet = []
         self.categories = []
         self.candidate = None

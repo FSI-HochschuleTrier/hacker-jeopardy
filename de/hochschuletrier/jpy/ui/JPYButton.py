@@ -66,3 +66,7 @@ class JPYButton(Frame):
     def processOverlay(self):
         self.button["text"] = ""
         self.master.overlayManager.showOverlay(0)
+        if self.double:
+            self.master.overlayManager.root.double.worth.set(2 * self.worth)
+            self.master.overlayManager.root.double.lift()
+            self.master.root.questionManager.toggledouble = True
