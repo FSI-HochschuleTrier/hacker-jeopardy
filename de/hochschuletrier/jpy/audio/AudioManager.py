@@ -8,6 +8,7 @@ class AudioManager:
         self.backgroundsong = 'resources/Jeopardy.ogg'
         self.player = {}
         self.player[self.backgroundsong] = Player()
+        self.player[self.backgroundsong].loop(0)
 
 
     def playFile(self, url):
