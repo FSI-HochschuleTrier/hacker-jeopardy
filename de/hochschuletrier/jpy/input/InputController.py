@@ -40,6 +40,7 @@ class InputController:
             InputController.blockBuzzer = True
             self.logger.log(str(trigger) + " enter Name")
             self.userName(trigger)
+            self.root.audioManager.playFile('resources/buzzer.ogg')
         if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
             return
         else:
@@ -49,7 +50,8 @@ class InputController:
                 self.root.questionManager.candidate.color)
             self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
             InputController.blockBuzzer = True
-            self.root.audioManager.pause()
+            self.root.audioManager.pause(self.root.audioManager.backgroundsong)
+            self.root.audioManager.playFile('resources/buzzer.ogg')
 
     def endProgram(self, event):
         if self.root.gameStateManager.activeState == 0:
@@ -68,7 +70,7 @@ class InputController:
             self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
             self.root.gameStateManager.states[1].double.lower()
             self.root.questionManager.toggledouble = False
-            self.root.audioManager.stop()
+            self.root.audioManager.stop(self.root.audioManager.backgroundsong)
             return
         if self.root.questionManager.toggledouble:
             self.root.questionManager.candidate.subPoints(2 * self.root.questionManager.worth)
@@ -96,4 +98,4 @@ class InputController:
         self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
         self.root.gameStateManager.states[1].double.lower()
         InputController.blockBuzzer = False
-        self.root.audioManager.stop()
+        self.root.audioManager.stop(self.root.audioManager.backgroundsong)

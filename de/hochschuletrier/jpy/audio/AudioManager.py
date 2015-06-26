@@ -5,27 +5,26 @@ class AudioManager:
         self.root = root
         # Set default prefix for all Player instances
         Player.cmd_prefix = CmdPrefix.PAUSING_KEEP
-        self.player = Player()
+        self.backgroundsong = 'resources/Jeopardy.ogg'
+        self.player = {}
+        self.player[self.backgroundsong] = Player()
 
 
     def playFile(self, url):
-        self.player.loadfile(url)
-        #self.player.pause()
+        self.player[url] = Player()
+        self.player[url].loadfile(url)
 
     def playBackgroundSong(self):
-        self.playFile('resources/Jeopardy.ogg')
+        self.playFile(self.backgroundsong)
 
     def resumeBackgroundSong(self):
-        if self.player.filename != 'Jeopardy.ogg':
-            self.playFile('resources/Jeopardy.ogg')
-        else:
-            self.player.pause()
+        self.pause(self.backgroundsong)
 
-    def pause(self):
-        self.player.pause()
+    def pause(self, url):
+        self.player[url].pause()
 
-    def stop(self):
-        self.player = Player()
+    def stop(self, url):
+        self.player[url] = Player()
 
     def playingBackground(self):
-        return (not self.player.paused) and self.player.filename == 'Jeopardy.ogg'
+        return (not self.player[self.backgroundsong].paused) and self.player[self.backgroundsong].filename == 'Jeopardy.ogg'
