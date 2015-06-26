@@ -1,0 +1,119 @@
+{
+    "double": [19, 29],
+    "categories": [
+        {
+            "name": "Assembly",
+            "type": "image",
+            "location": "/path/to/smth",
+            "questions": [
+                "assembly_1_sum.png",
+                "assembly_2_product.png",
+                "assembly_3_even.png",
+                "assembly_4_gcd.png",
+                "assembly_5_prime.png"
+            ],
+            "answers": [
+                "Summe in x86 Assembly",
+                "Produkt in x86 Assembly",
+                "Prüfe ob Zahl gerade in x86 Assembly",
+                "ggT in x86 Assembly",
+                "Primzahlentest in x86 Assembly"
+            ]
+        },
+                {
+            "name": "My Computer",
+            "type": "image",
+            "location": "/path/to/smth",
+            "questions": [
+                "my_computer_1_win10.png",
+                "my_computer_2_win7.png",
+                "my_computer_3_winxp.png",
+                "my_computer_4_win95.png",
+                "my_computer_5_win98.png"
+            ],
+            "answers": [
+                "Windows 8/10",
+                "Windows Vista/7",
+                "Windows Xp",
+                "Windows 95",
+                "Windows 98"
+            ]
+        },
+                {
+            "name": "Professoren",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "Meine sehr geehrten Damen und Herren",
+                "Örste",
+                "Sooooooooooooo",
+                "Gleitreibung [...] Haftreibung",
+                "Dann klatschen Sie das alles zusammen"
+            ],
+            "answers": [
+                "Görg",
+                "Jorg",
+                "Klösi",
+                "Rudolph",
+                "Lürig"
+            ]
+        },
+                {
+            "name": "Nougat",
+            "type": "image",
+            "location": "/path/to/smth",
+            "questions": [
+                "nougat_1_boot_loader.png",
+                "nougat_2_pool_rechner.png",
+                "nougat_3_smartpointer.png",
+                "nougat_4_network.png",
+                "nougat_5_roundrobin.png"
+            ],
+            "answers": [
+                "Bootloader",
+                "Poolrechner",
+                "Smartpointer",
+                "Netzwerk",
+                "Roundrobin"
+            ]
+        },
+                {
+            "name": "Große Worte",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                "\"C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do it blows your whole leg off\"",
+                "\"Linux is a cancer\"",
+                "\"Premature optimization is the root of all evil\"",
+                "\"Dijkstra probably hates me\"",
+                "\"The use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offense\""
+            ],
+            "answers": [
+                "Stroustrup",
+                "Ballmer",
+                "Knuth",
+                "Torvalds",
+                "Dijkstra"
+            ]
+        },
+                {
+            "name": "Sprachen",
+            "type": "text",
+            "location": "/path/to/smth",
+            "questions": [
+                ",+[-.,+]",
+                "(* 2 (cos 0) (+ 4 6))",
+                "The Infamous Hello World Program",
+                "CLS\nPRINT \"Hello, world!\"\nEND",
+                "@flavors = ( \"vanilla\", \"chocolate\", \"strawberry\" );"
+            ],
+            "answers": [
+                "Brainfuck",
+                "LISP",
+                "Shakespeare",
+                "Basic",
+                "Perl"
+            ]
+        }
+    ]
+}
