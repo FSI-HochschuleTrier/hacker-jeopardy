@@ -16,7 +16,7 @@ class DoubleOverlay(Overlay):
             bd=4,
             background="gold"
         )
-        self.place(x=0, y=0, relwidth=1, relheight=1, width=-1200, height=-750)
+        self.place(x=0, y=0, relwidth=1, relheight=1, width=-1400, height=-750)
 
         self.renderLabel()
 
