@@ -5,7 +5,7 @@ cd mplayer.py
 mv mplayer ../mplayer
 git clone https://github.com/metachris/RPIO.git
 cd RPIO
-python setup.py install
+sudo python setup.py install
 cd ..
 rm -rf mplayer.py
 rm -rf RPIO
