@@ -7,31 +7,31 @@ from collections import OrderedDict
 
 
 class JSONHandler:
-    filepath = ""
+	filepath = ""
 
-    def __init__(self, file):
-        self.categories = []
-        self.file = file
-        with open(JSONHandler.filepath + self.file) as data_file:
-            jsondata = json.load(data_file, object_pairs_hook=OrderedDict)
+	def __init__(self, file):
+		self.categories = []
+		self.file = file
+		with open(JSONHandler.filepath + self.file) as data_file:
+			jsondata = json.load(data_file, object_pairs_hook=OrderedDict)
 
-        self.double = jsondata["double"]
-        print("double: " + str(self.double))
+		self.double = jsondata["double"]
+		print("double: " + str(self.double))
 
-        cats = jsondata["categories"]
-        for cat in cats:
-            tempcat = Category(cat["name"], cat["type"], cat["location"])
+		cats = jsondata["categories"]
+		for cat in cats:
+			tempcat = Category(cat["name"], cat["type"], cat["location"])
 
-            for i in range(len(cat["questions"])):
-                q = cat["questions"][i]
-                a = cat["answers"][i]
-                #print(q + " -> " + a)
-                tempcat.addQuestion(q, a)
+			for i in range(len(cat["questions"])):
+				q = cat["questions"][i]
+				a = cat["answers"][i]
+				# print(q + " -> " + a)
+				tempcat.addQuestion(q, a)
 
-            self.categories.append(tempcat)
+			self.categories.append(tempcat)
 
-    def getCategories(self):
-        return self.categories
+	def getCategories(self):
+		return self.categories
 
-    def getQuestions(self):
-        return self.questions
+	def getQuestions(self):
+		return self.questions

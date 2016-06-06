@@ -68,7 +68,6 @@ class JPYButton(Frame):
 		if not self.master.root.audioManager.playingBackground():
 			self.master.root.audioManager.playBackgroundSong()
 
-
 	def processOverlay(self):
 		self.button["text"] = ""
 		self.master.overlayManager.showOverlay(0)

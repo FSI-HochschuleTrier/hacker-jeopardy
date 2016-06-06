@@ -30,11 +30,12 @@ class QuestionManager:
 		self.categories = jsonHandle.getCategories()
 		for cat in self.categories:
 			self.questions[cat.name] = cat.questions
-			self.answers[cat.name]	= cat.answers
+			self.answers[cat.name] = cat.answers
 
 	def restoreQuestionSet(self, data):
 		self.questionSet = data
-		# print self.questionSet
+
+	# print self.questionSet
 
 	def initQuestionSet(self):
 		for questionset in self.questions:

@@ -28,7 +28,7 @@ class TableProcessor:
 				count = (row - 1) * 6 + col
 				if self.root.questionManager.questionSet[col][row - 1] == 1:
 					text = "$" + str(values[row - 1])
-					# text = str((row - 1) * 6 + col)
+				# text = str((row - 1) * 6 + col)
 				else:
 					text = ""
 				JPYButton(
