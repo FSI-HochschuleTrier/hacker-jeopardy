@@ -17,8 +17,6 @@ class Jeopardy:
 			self.debug = True
 		else:
 			self.debug = False
-
-		print self.debug
 		self.gameStarted = False
 		self.mainWindow = MainWindow(self)
 		self.backupManager = BackupManager(self)
@@ -41,4 +39,4 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    main(sys.argv)
+	main(sys.argv)

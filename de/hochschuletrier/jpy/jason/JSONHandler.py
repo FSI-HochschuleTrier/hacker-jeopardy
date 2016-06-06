@@ -14,7 +14,6 @@ class JSONHandler:
         self.file = file
         with open(JSONHandler.filepath + self.file) as data_file:
             jsondata = json.load(data_file, object_pairs_hook=OrderedDict)
-        #print(jsondata)
 
         self.double = jsondata["double"]
         print("double: " + str(self.double))
@@ -26,7 +25,7 @@ class JSONHandler:
             for i in range(len(cat["questions"])):
                 q = cat["questions"][i]
                 a = cat["answers"][i]
-                print(q + " -> " + a)
+                #print(q + " -> " + a)
                 tempcat.addQuestion(q, a)
 
             self.categories.append(tempcat)

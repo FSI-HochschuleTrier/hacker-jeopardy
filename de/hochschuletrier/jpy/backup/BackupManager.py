@@ -6,7 +6,7 @@ class BackupManager:
     def __init__(self, root):
         self.root = root
         self.usebackup = False
-        self.dobackup = False
+        self.dobackup = True
         self.logger = JPYLogger(self)
         self.fileName_candidates = "candidates_backup.json"
         self.fileName_questions = "questions_backup.json"
@@ -19,7 +19,7 @@ class BackupManager:
         self.backupCandidates()
         self.backupQuestions()
         self.root.mainWindow.after(5000, self.performBackup)
-        self.logger.prompt("NOTICE :: Gamesession have been saved to file.")
+        #self.logger.prompt("NOTICE :: Gamesession have been saved to file.")
 
     def backupQuestions(self):
         self.jsonQuestionsHandler.save(self.root.questionManager.questionSet)

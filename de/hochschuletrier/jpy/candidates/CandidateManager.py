@@ -12,7 +12,6 @@ class CandidateManager:
         usebackup = self.master.backupManager.usebackup
 
         if usebackup:
-            print "lol"
             backupHandle = JSONBackupHandler("candidates_backup.json")
             self.restoreCandidates(backupHandle.load())
         else:
