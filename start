@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export DISPLAY=:0.0
+
+SET=($(ls questions))
+I=0
+
+for set in "${SET[@]}"
+do
+	echo "$I: $set"
+	I=$(($I + 1))
+done
+echo
+echo "Bitte Fragenset auswählen:"
+read choice
+
+python jeopardy.py  "${SET[$choice]}"
