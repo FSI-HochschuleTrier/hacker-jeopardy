@@ -14,4 +14,11 @@ echo
 echo "Bitte Fragenset auswählen:"
 read choice
 
-python jeopardy.py  "${SET[$choice]}"
+if [ "$1" == "debug" ]
+then
+	debug=" debug"
+else
+	debug=""
+fi
+
+python jeopardy.py  "${SET[$choice]}" $debug

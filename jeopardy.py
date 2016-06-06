@@ -12,23 +12,32 @@ from de.hochschuletrier.jpy.audio.AudioManager import AudioManager
 
 
 class Jeopardy:
-    def __init__(self, questiondir):
-        self.gameStarted = False
-        self.mainWindow = MainWindow(self)
-        self.backupManager = BackupManager(self)
-        # self.questionManager = QuestionManager(self, "questions.json")
-        self.questionManager = QuestionManager(self, questiondir)
-        self.candidateManager = CandidateManager(self)
-        self.gameStateManager = GameStateManager(self)
-        self.inputController = PseudoInputController(self)
-        self.buzzerInputController = BuzzerInputController(self)
-        self.audioManager = AudioManager(self)
+	def __init__(self, questiondir, debug = ""):
+		if (debug == "debug"):
+			self.debug = True
+		else:
+			self.debug = False
 
-        self.mainWindow.mainloop()
+		print self.debug
+		self.gameStarted = False
+		self.mainWindow = MainWindow(self)
+		self.backupManager = BackupManager(self)
+		# self.questionManager = QuestionManager(self, "questions.json")
+		self.questionManager = QuestionManager(self, questiondir)
+		self.candidateManager = CandidateManager(self)
+		self.gameStateManager = GameStateManager(self)
+		self.inputController = PseudoInputController(self)
+		self.buzzerInputController = BuzzerInputController(self)
+		self.audioManager = AudioManager(self)
+
+		self.mainWindow.mainloop()
 
 
 def main(argv):
-    main = Jeopardy(argv[1])
+	if (len(argv) > 2):
+		main = Jeopardy(argv[1], argv[2])
+	else:
+		main = Jeopardy(argv[1])
 
 
 if __name__ == '__main__':
