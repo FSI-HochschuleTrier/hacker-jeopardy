@@ -49,6 +49,8 @@ class JPYButton(Frame):
 			return
 		if self.double:
 			print("double!!!!")
+		if self.button["text"] == "":
+			return
 		self.master.root.questionManager.worth = self.worth
 		self.button["font"] = self.font2
 		self.button["foreground"] = "#FFCC00"
