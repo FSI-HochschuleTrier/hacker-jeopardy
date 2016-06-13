@@ -10,7 +10,7 @@ class AudioManager:
 		self.player[self.backgroundsong] = Player()
 
 	def playFile(self, url):
-		self.player[url] = Player(url)
+		self.player[url] = Player(args=("-fs", url))
 
 	def playBackgroundSong(self):
 		self.playFile(self.backgroundsong)

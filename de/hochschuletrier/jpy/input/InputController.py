@@ -15,10 +15,17 @@ class InputController:
 		mainWindow = root.mainWindow
 
 	def startGame(self, event):
+		if InputController.introPlaying:
+			self.root.audioManager.stop("resources/intro.ogg")
+			InputController.introPlaying = False
 		self.root.gameStarted = True
 		self.root.gameStateManager.changeState(1)
 
 	def intro(self, event):
+		if self.root.gameStateManager.activeState != 0:
+			return
+		# VIDEO IS WORKING!
+		#self.root.audioManager.playFile("resources/tt.mp4")
 		if InputController.introPlaying:
 			self.root.audioManager.stop("resources/intro.ogg")
 			InputController.introPlaying = False
