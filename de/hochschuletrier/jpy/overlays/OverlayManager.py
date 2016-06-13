@@ -1,4 +1,5 @@
 __author__ = 'miko'
+from de.hochschuletrier.jpy.overlays.DoubleOverlay import DoubleOverlay
 from de.hochschuletrier.jpy.overlays.QuestionOverlay import QuestionOverlay
 from de.hochschuletrier.jpy.overlays.UsernameOverlay import UsernameOverlay
 
@@ -14,6 +15,7 @@ class OverlayManager:
 	def generateOverlays(self):
 		self.overlays.append(QuestionOverlay(self.root, overlayName="Frage", id=0))
 		self.overlays.append(UsernameOverlay(self.root, overlayName="Username", id=1))
+		self.overlays.append(DoubleOverlay(self.root, overlayName="Double Jeopardy", id=2))
 
 		for overlay in self.overlays:
 			overlay.lower()

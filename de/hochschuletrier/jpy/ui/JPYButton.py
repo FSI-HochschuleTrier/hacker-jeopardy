@@ -48,8 +48,12 @@ class JPYButton(Frame):
 		if not self.master.root.gameStarted:
 			return
 		if self.double:
-			print("double!!!!")
+			self.doubleJeopardy(event)
+		else:
+			self.root.gameStateManager.states[1].overlayManager.overlays[2].hide(self)
 		if self.button["text"] == "":
+			return
+		if self.root.gameStateManager.states[1].overlayManager.overlays[2].isVisible:
 			return
 		self.master.root.questionManager.worth = self.worth
 		self.button["font"] = self.font2
@@ -77,3 +81,8 @@ class JPYButton(Frame):
 			self.master.overlayManager.root.double.worth.set(2 * self.worth)
 			self.master.overlayManager.root.double.lift()
 			self.master.root.questionManager.toggledouble = True
+
+	def doubleJeopardy(self, event):
+		self.root.gameStateManager.states[1].overlayManager.overlays[2].setCaller(self, event)
+		self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
+		self.double = False

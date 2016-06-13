@@ -1,40 +1,75 @@
 __author__ = 'georg'
 
-from de.hochschuletrier.jpy.Constants import Constants, Fonts
+from de.hochschuletrier.jpy.input.InputController import InputController
+from de.hochschuletrier.jpy.Constants import Fonts
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
-from Tkinter import Label, StringVar
+from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
+from Tkinter import Label, Entry, Button, END
 
 
 class DoubleOverlay(Overlay):
 	def __init__(self, *args, **kwargs):
 		Overlay.__init__(self, *args, **kwargs)
 		self.label = ""
-		self.money = ""
-		self.worth = StringVar()
+		self.field = ""
+		self.button = ""
+		self.user = ""
+		self.logger = JPYLogger(self)
 		self.config(
-			padx=0,
-			pady=30,
-			bd=4,
-			background="gold"
+			background="gold",
+			cursor="arrow"
 		)
-		self.place(x=0, y=0, relwidth=1, relheight=1, width=-1400, height=-750)
+		self.caller = ""
 
 		self.renderLabel()
+		self.renderField()
+		self.renderButton()
 
 	def renderLabel(self):
 		self.label = Label(self)
 		self.label.config(
-			text="Double Jeopardy",
-			font=Fonts.MONEY_MEDIUM,
+			text="DOUBLE JEOPARDY",
+			font=Fonts.MONEY_BIG,
 			background="gold"
 		)
 		self.label.pack()
 
-		self.money = Label(self)
-		self.money.config(
-			textvar=self.worth,
-			font=Fonts.MONEY_BIG,
-			background="gold",
-			wraplength=Constants.SCREENW
+	def renderField(self):
+		self.field = Entry(self)
+		self.field.config(
+			relief="solid",
+			bd=2,
+			highlightcolor="black",
+			font=Fonts.USER_LABEL_NAME_BIG
 		)
-		self.money.pack()
+		self.field.pack()
+
+	def renderButton(self):
+		Label(self, text='\n', background="gold").pack()
+		self.button = Button(self)
+		self.button.config(
+			text="OK",
+			relief="solid",
+			background="black",
+			foreground="gold",
+			font=Fonts.MONEY_MEDIUM,
+			command=self.save
+		)
+		self.button.pack()
+
+	def save(self):
+		self.logger.prompt("DOUBLE JEOPARDY!!!")
+		self.hide(self)
+		InputController.blockBuzzer = False
+
+	def insert(self, user):
+		self.field.delete(0, END)
+		self.field.insert(0, user.name.get())
+
+	def setCaller(self, caller, event):
+		self.caller = caller
+		self.oldEvent = event
+		self.button.bind("<Button-1>", self.callback)
+
+	def callback(self, event):
+		self.caller.activateQuestion(self.oldEvent)
