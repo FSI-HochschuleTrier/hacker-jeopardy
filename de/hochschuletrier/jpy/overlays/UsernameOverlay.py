@@ -41,6 +41,8 @@ class UsernameOverlay(Overlay):
 			highlightcolor="black",
 			font=Fonts.USER_LABEL_NAME_BIG
 		)
+		self.field.bind("<Return>", self.save)
+		self.field.focus_set()
 		self.field.pack()
 
 	def renderButton(self):
@@ -56,7 +58,7 @@ class UsernameOverlay(Overlay):
 		)
 		self.button.pack()
 
-	def save(self):
+	def save(self, event=""):
 		self.logger.prompt("User " + str(
 			self.user.id) + " changed name from '" + self.user.name.get() + "' to '" + self.field.get() + "'")
 		self.user.name.set(self.field.get())
