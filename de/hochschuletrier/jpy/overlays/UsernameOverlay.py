@@ -42,6 +42,7 @@ class UsernameOverlay(Overlay):
 			font=Fonts.USER_LABEL_NAME_BIG
 		)
 		self.field.pack()
+		self.field.focus_set()
 
 	def renderButton(self):
 		Label(self, text='\n', background="gold").pack()
