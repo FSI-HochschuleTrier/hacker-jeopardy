@@ -5,7 +5,7 @@ sudo apt-get install python2.7
 git clone https://github.com/FSI-HochschuleTrier/mplayer.py.git
 cd mplayer.py
 mv mplayer ../mplayer
-git clone https://github.com/metachris/RPIO.git
+git https://github.com/tylerwowen/RPIO.git
 cd RPIO
 sudo python setup.py install
 cd ..
