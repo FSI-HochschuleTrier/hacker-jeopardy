@@ -1,17 +1,22 @@
 __author__ = 'miko'
 from de.hochschuletrier.jpy.states.GameState import GameState
+from de.hochschuletrier.jpy.Constants import Constants
 from Tkinter import Label, PhotoImage
+import Image
 
 
 class StartGameState(GameState):
 	def __init__(self, *args, **kwargs):
 		GameState.__init__(self, *args, **kwargs)
-		image = PhotoImage(file="resources/opener.gif")
+		image = Image.open("resources/opener.png")
+		image = image.resize((Constants.SCREENW, Constants.SCREENH), Image.ANTIALIAS)
+		image.save("resources/opener_temp.png", "png")
+		image2 = PhotoImage(file="resources/opener_temp.png")
 		opener = Label(self)
 		self.config(background="gold")
 		opener.config(
-			image=image,
-			background="blue"
+			image=image2,
+			background="#0000ff"
 		)
-		opener.image = image
-		opener.place(x=0, y=0, relwidth=1, relheight=1)
+		opener.image = image2
+		opener.place(x=0, y=0, relwidth=1.0, relheight=1.0)
