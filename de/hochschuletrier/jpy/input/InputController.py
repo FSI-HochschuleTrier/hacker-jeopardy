@@ -83,7 +83,7 @@ class InputController:
 			return
 		if self.root.questionManager.candidate is None:
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
-			self.root.gameStateManager.states[1].double.lower()
+			self.root.gameStateManager.states[1].overlayManager.overlays[2].hide(self)
 			self.root.questionManager.toggledouble = False
 			self.root.audioManager.stop(self.root.audioManager.backgroundsong)
 			return
