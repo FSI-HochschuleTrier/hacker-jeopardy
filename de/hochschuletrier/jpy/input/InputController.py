@@ -5,6 +5,7 @@ from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 
 class InputController:
 	blockBuzzer = False
+	introPlaying = False
 
 	def __init__(self, root):
 		self.root = root
@@ -16,6 +17,14 @@ class InputController:
 	def startGame(self, event):
 		self.root.gameStarted = True
 		self.root.gameStateManager.changeState(1)
+
+	def intro(self, event):
+		if InputController.introPlaying:
+			self.root.audioManager.stop("resources/intro.ogg")
+			InputController.introPlaying = False
+		else:
+			self.root.audioManager.playFile("resources/intro.ogg")
+			InputController.introPlaying = True
 
 	def userName(self, trigger):
 		if self.root.gameStateManager.activeState != 1:

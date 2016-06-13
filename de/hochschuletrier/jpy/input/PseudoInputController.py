@@ -17,6 +17,7 @@ class PseudoInputController(InputController):
 		mainWindow.bind("<KP_2>", lambda event: self.test(event, 2))
 		mainWindow.bind("<KP_Add>", self.addPoints)
 		mainWindow.bind("<KP_Subtract>", self.subPoints)
+		mainWindow.bind("<KP_5>", self.intro)
 		# mainWindow.bind("p", self.userName)
 		mainWindow.bind("9", self.startGame)
 		mainWindow.bind("1", lambda event: self.pressedBuzzer(0))
