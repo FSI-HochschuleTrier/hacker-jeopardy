@@ -16,7 +16,7 @@ class DoubleOverlay(Overlay):
 		self.user = ""
 		self.logger = JPYLogger(self)
 		self.config(
-			background="gold",
+			background="red",
 			cursor="arrow"
 		)
 		self.caller = ""
@@ -30,7 +30,7 @@ class DoubleOverlay(Overlay):
 		self.label.config(
 			text="DOUBLE JEOPARDY",
 			font=Fonts.MONEY_BIG,
-			background="gold"
+			background="red"
 		)
 		self.label.pack()
 
@@ -45,19 +45,19 @@ class DoubleOverlay(Overlay):
 		self.field.pack()
 
 	def renderButton(self):
-		Label(self, text='\n', background="gold").pack()
+		Label(self, text='\n', background="red").pack()
 		self.button = Button(self)
 		self.button.config(
 			text="OK",
 			relief="solid",
 			background="black",
-			foreground="gold",
+			foreground="red",
 			font=Fonts.MONEY_MEDIUM,
 			command=self.save
 		)
 		self.button.pack()
 
-	def save(self):
+	def save(self, event=""):
 		self.logger.prompt("DOUBLE JEOPARDY!!!")
 		self.hide(self)
 		InputController.blockBuzzer = False

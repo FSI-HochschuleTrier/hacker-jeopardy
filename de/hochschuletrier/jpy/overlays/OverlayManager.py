@@ -23,6 +23,9 @@ class OverlayManager:
 	def showOverlay(self, overlay):
 		if overlay > len(self.overlays) - 1:
 			return
+		if self.overlays[overlay].id == 1 or self.overlays[overlay].id == 2:
+			self.overlays[overlay].field.bind("<Return>", self.overlays[overlay].save)
+			self.overlays[overlay].field.focus_set()
 		self.overlays[self.activeOverlay].lower()
 		self.overlays[overlay].lift(aboveThis=None)
 		self.overlays[overlay].isVisible = True
