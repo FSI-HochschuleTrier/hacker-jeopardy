@@ -4,6 +4,9 @@ hacker-jeopardy
 
 a jeopardy software written in python, designed for the RaspberryPI
 
+### Development
+start with the `debug` parameter.
+
 ### Remote PC
 You have to open two shells to the pi:
 
