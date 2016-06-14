@@ -30,7 +30,6 @@ class Jeopardy:
 
 		self.mainWindow.mainloop()
 
-
 def main(argv):
 	if (len(argv) > 2):
 		main = Jeopardy(argv[1], argv[2])

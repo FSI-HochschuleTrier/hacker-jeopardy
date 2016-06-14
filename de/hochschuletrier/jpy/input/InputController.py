@@ -59,6 +59,7 @@ class InputController:
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
 			return
 		else:
+			self.root.audioManager.stopQuestion()
 			self.root.questionManager.candidate = self.root.candidateManager.candidates[trigger]
 			# self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(
@@ -82,17 +83,22 @@ class InputController:
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
 			return
 		if self.root.questionManager.candidate is None:
+			self.root.gameStateManager.states[1].overlayManager.overlays[0].stopAudio()
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 			self.root.gameStateManager.states[1].overlayManager.overlays[2].hide(self)
 			self.root.questionManager.toggledouble = False
-			self.root.audioManager.stop(self.root.audioManager.backgroundsong)
+			if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
+				self.root.audioManager.stop(self.root.audioManager.backgroundsong)
 			return
+		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio != "":
+			self.root.gameStateManager.states[1].overlayManager.overlays[0].playAudio()
 		self.root.questionManager.candidate.subPoints(self.root.questionManager.worth)
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].normalize()
 		# self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 		InputController.blockBuzzer = False
-		self.root.audioManager.resumeBackgroundSong()
+		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
+			self.root.audioManager.resumeBackgroundSong()
 
 	def addPoints(self, event):
 		if self.root.gameStateManager.activeState != 1:
@@ -101,6 +107,7 @@ class InputController:
 			return
 		if self.root.questionManager.candidate is None:
 			return
+		self.root.gameStateManager.states[1].overlayManager.overlays[0].stopAudio()
 		self.root.questionManager.candidate.addPoints(self.root.questionManager.worth)
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)

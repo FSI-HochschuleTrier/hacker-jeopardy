@@ -3,10 +3,10 @@
     "categories": [
         {
             "name": "geocaching",
-            "type": "text",
+            "type": "audio",
             "location": "/path/to/smth",
             "questions": [
-                "kein Fehler sondern die erste Form von trackables",
+                "intro.ogg",
                 "dieses \"Feature\" ließ Bill clinton 2000 abschalten, und legte damit die grundlage des geocachings",
                 "ein cache, der gar keiner ist, sondern ein besonderer ort o.Ä.",
                 "damit könnte man ohne gps geocachen",

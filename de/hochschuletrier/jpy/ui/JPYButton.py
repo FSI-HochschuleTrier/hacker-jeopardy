@@ -67,11 +67,17 @@ class JPYButton(Frame):
 			self.button["text"] = "Bild"
 			directory = self.master.root.questionManager.questiondir
 			self.master.overlayManager.overlays[0].setimage("questions/" + directory + "/" + questionText)
+		elif event.widget.master.category == "audio":
+			self.button["text"] = "Audio"
+			self.master.overlayManager.overlays[0].text.set("Audio")
+			directory = self.master.root.questionManager.questiondir
+			self.master.overlayManager.overlays[0].setAudio("questions/" + directory + "/" + questionText)
+			self.master.overlayManager.overlays[0].playAudio()
 		else:
 			self.master.overlayManager.overlays[0].delimage()
 		self.master.root.questionManager.questionSet[self.questionID[0]][self.questionID[1]] = 0
 		self.master.after(1300, self.processOverlay)
-		if not self.master.root.audioManager.playingBackground():
+		if not self.master.root.audioManager.playingBackground() and event.widget.master.category != "audio":
 			self.master.root.audioManager.playBackgroundSong()
 
 	def processOverlay(self):

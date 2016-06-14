@@ -10,7 +10,7 @@ class QuestionOverlay(Overlay):
 		Overlay.__init__(self, *args, **kwargs)
 		self.label = ""
 		self.config(background="blue")
-
+		self.audio = ""
 		self.drawLabel()
 
 	def drawLabel(self):
@@ -47,6 +47,16 @@ class QuestionOverlay(Overlay):
 		self.img = img.resize((1280, 720))
 		self.image = ImageTk.PhotoImage(self.img)
 		self.label.config(image=self.image)
+
+	def setAudio(self, url):
+		self.audio = url
+
+	def playAudio(self):
+		self.root.root.audioManager.playQuestion(self.audio)
+
+	def stopAudio(self):
+		self.root.root.audioManager.stopQuestion()
+		self.audio = ""
 
 	def delimage(self):
 		self.drawLabel()
