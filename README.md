@@ -1,6 +1,6 @@
 hacker-jeopardy
 ===============
-![](/resources/opener.gif)
+![](/resources/opener.png)
 
 a jeopardy software written in python, designed for the RaspberryPI
 
