@@ -4,6 +4,7 @@ from Tkinter import *
 from tkFont import Font
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
+import time
 
 
 class JPYButton(Frame):
@@ -73,6 +74,7 @@ class JPYButton(Frame):
 			self.master.overlayManager.overlays[0].text.set("Audio")
 			directory = self.master.root.questionManager.questiondir
 			self.master.overlayManager.overlays[0].setAudio("questions/" + directory + "/" + questionText)
+			time.sleep(1)
 			self.master.overlayManager.overlays[0].playAudio()
 		else:
 			self.master.overlayManager.overlays[0].delimage()
