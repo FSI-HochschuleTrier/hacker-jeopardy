@@ -2,15 +2,17 @@ __author__ = 'miko'
 from de.hochschuletrier.jpy.states.GameState import GameState
 from de.hochschuletrier.jpy.Constants import Constants
 from Tkinter import Label, PhotoImage
+import os.path
 import Image
 
 
 class StartGameState(GameState):
 	def __init__(self, *args, **kwargs):
 		GameState.__init__(self, *args, **kwargs)
-		image = Image.open("resources/opener.png")
-		image = image.resize((Constants.SCREENW, Constants.SCREENH), Image.ANTIALIAS)
-		image.save("resources/opener_temp.png", "png")
+		if not os.path.exists("resources/opener_temp.png"):
+			image = Image.open("resources/opener.png")
+			image = image.resize((Constants.SCREENW, Constants.SCREENH), Image.ANTIALIAS)
+			image.save("resources/opener_temp.png", "png")
 		image2 = PhotoImage(file="resources/opener_temp.png")
 		opener = Label(self)
 		self.config(background="gold")
