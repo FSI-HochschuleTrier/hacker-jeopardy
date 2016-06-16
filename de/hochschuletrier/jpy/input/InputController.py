@@ -105,6 +105,9 @@ class InputController:
 			return
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
 			return
+		if self.root.questionManager.candidate is None and self.root.gameStateManager.states[1].overlayManager.overlays[0].audio != "":
+			self.root.gameStateManager.states[1].overlayManager.overlays[0].playAudio()
+			return
 		if self.root.questionManager.candidate is None:
 			return
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].stopAudio()
