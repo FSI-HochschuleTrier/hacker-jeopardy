@@ -20,7 +20,7 @@ class JSONHandler:
 
 		cats = jsondata["categories"]
 		for cat in cats:
-			tempcat = Category(cat["name"], cat["type"], cat["location"])
+			tempcat = Category(cat["name"], cat["type"])
 
 			for i in range(len(cat["questions"])):
 				q = cat["questions"][i]

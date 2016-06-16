@@ -1,8 +1,7 @@
 class Category:
-	def __init__(self, name, type, location):
+	def __init__(self, name, type):
 		self.name = name
 		self.type = type
-		self.location = location
 		self.questions = []
 		self.answers = []
 
