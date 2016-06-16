@@ -13,6 +13,7 @@ class StartGameState(GameState):
 			image = Image.open("resources/opener.png")
 			image = image.resize((Constants.SCREENW, Constants.SCREENH), Image.ANTIALIAS)
 			image.save("resources/opener_temp.png", "png")
+			print "generated"
 		image2 = PhotoImage(file="resources/opener_temp.png")
 		opener = Label(self)
 		self.config(background="gold")
