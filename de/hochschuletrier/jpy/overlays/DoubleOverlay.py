@@ -13,24 +13,29 @@ class DoubleOverlay(Overlay):
 		self.label = ""
 		self.field = ""
 		self.button = ""
-		self.user = ""
 		self.logger = JPYLogger(self)
 		self.config(
 			background="red",
 			cursor="arrow"
 		)
 		self.caller = ""
+		self.selectedCandidate = 0
+		self.settedPoints = 0
 
 		self.renderLabel()
 		self.renderField()
 		self.renderButton()
+
+		self.root.root.questionManager.candidate = self.root.root.candidateManager.candidates[self.selectedCandidate]
+		self.highlight(self.root.root.questionManager.candidate.color)
+
 
 	def renderLabel(self):
 		self.label = Label(self)
 		self.label.config(
 			text="DOUBLE JEOPARDY",
 			font=Fonts.MONEY_BIG,
-			background="red"
+			background="gold"
 		)
 		self.label.pack()
 
@@ -51,25 +56,57 @@ class DoubleOverlay(Overlay):
 			text="OK",
 			relief="solid",
 			background="black",
-			foreground="red",
+			foreground="gold",
 			font=Fonts.MONEY_MEDIUM,
 			command=self.save
 		)
 		self.button.pack()
 
 	def save(self, event=""):
-		self.logger.prompt("DOUBLE JEOPARDY!!!")
-		self.hide(self)
-		InputController.blockBuzzer = False
+		try:
+			self.settedPoints = int(self.field.get())
+		except ValueError:
+			return
 
-	def insert(self, user):
-		self.field.delete(0, END)
-		self.field.insert(0, user.name.get())
+		if self.settedPoints < self.caller.worth or self.settedPoints > 2 * self.caller.worth:
+			return
+
+		self.logger.prompt("DOUBLE JEOPARDY!!!")
+		self.logger.prompt("candidate " + str(self.selectedCandidate) + " has set " + str(self.settedPoints) + " points")
+		self.root.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(
+			self.root.root.questionManager.candidate.color)
+		self.hide(self)
+		self.caller.activateQuestion(self.oldEvent)
+
+	def nextCandidate(self, event):
+		if self.isVisible:
+			numCandidates = len(self.master.root.candidateManager.candidates)
+			if (self.selectedCandidate + 1 < numCandidates):
+				self.selectedCandidate += 1
+			else:
+				self.selectedCandidate = 0
+			self.root.root.questionManager.candidate = self.root.root.candidateManager.candidates[self.selectedCandidate]
+			self.highlight(self.root.root.questionManager.candidate.color)
+
+
+	def prevCandidate(self, event):
+		numCandidates = len(self.master.root.candidateManager.candidates)
+		if self.isVisible:
+			if (self.selectedCandidate - 1 >= 0):
+				self.selectedCandidate -= 1
+			else:
+				self.selectedCandidate = numCandidates - 1
+			self.root.root.questionManager.candidate = self.root.root.candidateManager.candidates[self.selectedCandidate]
+			self.highlight(self.root.root.questionManager.candidate.color)
+
+	def highlight(self, color):
+		self.config(background=color)
+		self.label.config(background=color)
+		return
 
 	def setCaller(self, caller, event):
 		self.caller = caller
 		self.oldEvent = event
-		self.button.bind("<Button-1>", self.callback)
 
-	def callback(self, event):
-		self.caller.activateQuestion(self.oldEvent)
+	def clear(self):
+		self.field.delete(0, END)

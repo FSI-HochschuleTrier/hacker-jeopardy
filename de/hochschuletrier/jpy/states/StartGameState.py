@@ -3,7 +3,7 @@ from de.hochschuletrier.jpy.states.GameState import GameState
 from de.hochschuletrier.jpy.Constants import Constants
 from Tkinter import Label, PhotoImage
 import os.path
-import Image
+from PIL import Image
 
 
 class StartGameState(GameState):

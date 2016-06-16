@@ -23,3 +23,5 @@ class PseudoInputController(InputController):
 		mainWindow.bind("1", lambda event: self.pressedBuzzer(0))
 		mainWindow.bind("2", lambda event: self.pressedBuzzer(1))
 		mainWindow.bind("3", lambda event: self.pressedBuzzer(2))
+		mainWindow.bind("<Left>", self.root.gameStateManager.states[1].overlayManager.overlays[2].prevCandidate)
+		mainWindow.bind("<Right>", self.root.gameStateManager.states[1].overlayManager.overlays[2].nextCandidate)

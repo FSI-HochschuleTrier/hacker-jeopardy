@@ -89,10 +89,13 @@ class InputController:
 			self.root.questionManager.toggledouble = False
 			if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
 				self.root.audioManager.stop(self.root.audioManager.backgroundsong)
-			return
 		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio != "":
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].playAudio()
-		self.root.questionManager.candidate.subPoints(self.root.questionManager.worth)
+		if self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints != 0:
+			self.root.questionManager.candidate.subPoints(self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints)
+			self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints = 0
+		else:
+			self.root.questionManager.candidate.subPoints(self.root.questionManager.worth)
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].normalize()
 		# self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
@@ -111,7 +114,11 @@ class InputController:
 		if self.root.questionManager.candidate is None:
 			return
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].stopAudio()
-		self.root.questionManager.candidate.addPoints(self.root.questionManager.worth)
+		if self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints != 0:
+			self.root.questionManager.candidate.addPoints(self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints)
+			self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints = 0
+		else:
+			self.root.questionManager.candidate.addPoints(self.root.questionManager.worth)
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 		InputController.blockBuzzer = False

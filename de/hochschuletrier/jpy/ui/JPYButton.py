@@ -3,6 +3,7 @@ __author__ = 'miko'
 from Tkinter import *
 from tkFont import Font
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
+from de.hochschuletrier.jpy.input.InputController import InputController
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 import time
 
@@ -82,16 +83,16 @@ class JPYButton(Frame):
 		self.master.after(1300, self.processOverlay)
 		if not self.master.root.audioManager.playingBackground() and event.widget.master.category != "audio":
 			self.master.root.audioManager.playBackgroundSong()
+		if self.master.overlayManager.overlays[2].settedPoints != 0:
+			self.master.root.audioManager.resumeBackgroundSong()
 
 	def processOverlay(self):
 		self.button["text"] = ""
 		self.master.overlayManager.showOverlay(0)
-		if self.double:
-			self.master.overlayManager.root.double.worth.set(2 * self.worth)
-			self.master.overlayManager.root.double.lift()
-			self.master.root.questionManager.toggledouble = True
 
 	def doubleJeopardy(self, event):
+		InputController.blockBuzzer = True
+		self.root.gameStateManager.states[1].overlayManager.overlays[2].clear()
 		self.root.gameStateManager.states[1].overlayManager.overlays[2].setCaller(self, event)
 		self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
 		self.double = False
