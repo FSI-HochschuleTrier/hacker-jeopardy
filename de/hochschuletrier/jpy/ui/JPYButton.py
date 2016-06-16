@@ -68,6 +68,7 @@ class JPYButton(Frame):
 			directory = self.master.root.questionManager.questiondir
 			self.master.overlayManager.overlays[0].setimage("questions/" + directory + "/" + questionText)
 		elif event.widget.master.category == "audio":
+			self.master.overlayManager.overlays[0].delimage()
 			self.button["text"] = "Audio"
 			self.master.overlayManager.overlays[0].text.set("Audio")
 			directory = self.master.root.questionManager.questiondir
