@@ -73,6 +73,7 @@ class DoubleOverlay(Overlay):
 
 		self.logger.prompt("DOUBLE JEOPARDY!!!")
 		self.logger.prompt("candidate " + str(self.selectedCandidate) + " has set " + str(self.settedPoints) + " points")
+		self.root.root.questionManager.candidate = self.root.root.candidateManager.candidates[self.selectedCandidate]
 		self.root.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(
 			self.root.root.questionManager.candidate.color)
 		self.hide(self)
