@@ -15,7 +15,7 @@ class DoubleOverlay(Overlay):
 		self.button = ""
 		self.logger = JPYLogger(self)
 		self.config(
-			background="red",
+			background="gold",
 			cursor="arrow"
 		)
 		self.caller = ""
@@ -25,9 +25,6 @@ class DoubleOverlay(Overlay):
 		self.renderLabel()
 		self.renderField()
 		self.renderButton()
-
-		self.root.root.questionManager.candidate = self.root.root.candidateManager.candidates[self.selectedCandidate]
-		self.highlight(self.root.root.questionManager.candidate.color)
 
 
 	def renderLabel(self):
@@ -67,8 +64,9 @@ class DoubleOverlay(Overlay):
 			self.settedPoints = int(self.field.get())
 		except ValueError:
 			return
-
 		if self.settedPoints < self.caller.worth or self.settedPoints > 2 * self.caller.worth:
+			return
+		if self.root.root.questionManager.candidate is None:
 			return
 
 		self.logger.prompt("DOUBLE JEOPARDY!!!")

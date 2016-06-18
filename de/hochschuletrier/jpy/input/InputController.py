@@ -78,6 +78,9 @@ class InputController:
 		self.root.gameStateManager.changeState(trigger)
 
 	def subPoints(self, event):
+		self.logger.prompt(str(self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints))
+		self.logger.prompt(str(self.root.questionManager.candidate is None))
+
 		if self.root.gameStateManager.activeState != 1:
 			return
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
@@ -86,9 +89,9 @@ class InputController:
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].stopAudio()
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 			self.root.gameStateManager.states[1].overlayManager.overlays[2].hide(self)
-			self.root.questionManager.toggledouble = False
 			if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
 				self.root.audioManager.stop(self.root.audioManager.backgroundsong)
+			return
 		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio != "":
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].playAudio()
 		if self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints != 0:
