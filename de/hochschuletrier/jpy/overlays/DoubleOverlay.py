@@ -1,7 +1,7 @@
 __author__ = 'georg'
 
 from de.hochschuletrier.jpy.input.InputController import InputController
-from de.hochschuletrier.jpy.Constants import Fonts
+from de.hochschuletrier.jpy.Constants import Fonts, Constants
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 from Tkinter import Label, Entry, Button, END
@@ -14,10 +14,13 @@ class DoubleOverlay(Overlay):
 		self.field = ""
 		self.button = ""
 		self.logger = JPYLogger(self)
+		self.bLabel = ""
 		self.config(
 			background="gold",
-			cursor="arrow"
+			cursor="arrow",
+			bd=35
 		)
+		self.place(x=Constants.SCREENW / 4, y=(Constants.SCREENH/10)*2, relwidth=0.5, relheight=0.6, width=10, height=10)
 		self.caller = ""
 		self.selectedCandidate = 0
 		self.settedPoints = 0
@@ -41,13 +44,15 @@ class DoubleOverlay(Overlay):
 		self.field.config(
 			relief="solid",
 			bd=2,
+			width=5,
 			highlightcolor="black",
 			font=Fonts.USER_LABEL_NAME_BIG
 		)
 		self.field.pack()
 
 	def renderButton(self):
-		Label(self, text='\n', background="red").pack()
+		self.bLabel = Label(self, text='\n', background="gold", width=0)
+		self.bLabel.pack()
 		self.button = Button(self)
 		self.button.config(
 			text="OK",
@@ -101,6 +106,8 @@ class DoubleOverlay(Overlay):
 	def highlight(self, color):
 		self.config(background=color)
 		self.label.config(background=color)
+		self.bLabel.config(background=color)
+		self.button.config(foreground=color)
 		return
 
 	def setCaller(self, caller, event):
