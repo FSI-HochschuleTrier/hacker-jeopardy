@@ -1,5 +1,6 @@
 __author__ = 'miko'
 import sys
+from Tkinter import Tk
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 
 
@@ -122,6 +123,8 @@ class InputController:
 			self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints = 0
 		else:
 			self.root.questionManager.candidate.addPoints(self.root.questionManager.worth)
+		self.root.questionManager.lastButton.highlight(self.root.questionManager.candidate.color)
+		Tk.update(self.root.mainWindow)
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 		InputController.blockBuzzer = False

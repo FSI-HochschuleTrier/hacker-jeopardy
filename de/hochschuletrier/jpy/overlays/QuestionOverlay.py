@@ -11,6 +11,7 @@ class QuestionOverlay(Overlay):
 		self.label = ""
 		self.config(background="blue")
 		self.audio = ""
+		self.lastButton = ""
 		self.drawLabel()
 
 	def drawLabel(self):

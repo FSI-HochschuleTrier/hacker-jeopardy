@@ -15,6 +15,7 @@ class QuestionManager:
 		self.categories = []
 		self.candidate = None
 		self.worth = 0
+		self.lastButton = ""
 		self.usebackup = self.master.backupManager.usebackup
 
 		self.requestData()

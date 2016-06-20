@@ -58,6 +58,7 @@ class JPYButton(Frame):
 		if self.root.gameStateManager.states[1].overlayManager.overlays[2].isVisible:
 			return
 		self.master.root.questionManager.worth = self.worth
+		self.master.root.questionManager.lastButton = self
 		self.button["font"] = self.font2
 		self.button["foreground"] = "#FFCC00"
 		questionText = event.widget.master.questionText
@@ -96,3 +97,6 @@ class JPYButton(Frame):
 		self.root.gameStateManager.states[1].overlayManager.overlays[2].setCaller(self, event)
 		self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
 		self.double = False
+
+	def highlight(self, color):
+		self.button.config(background=color, activebackground=color)
