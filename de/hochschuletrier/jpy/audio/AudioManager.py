@@ -9,6 +9,11 @@ class AudioManager:
 		self.player = {}
 		self.player[self.backgroundsong] = Player()
 		self.player["question"]	= Player()
+                self.buzz = Player()
+                self.buzz.loadfile("resources/buzzer.ogg")
+
+        def playBuzzer(self):
+            self.buzz.play()
 
 	def playQuestion(self, url):
 		self.player["question"] = Player(url)

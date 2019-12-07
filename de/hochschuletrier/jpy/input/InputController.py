@@ -56,7 +56,8 @@ class InputController:
 			InputController.blockBuzzer = True
 			self.logger.log(str(trigger) + " enter Name")
 			self.userName(trigger)
-			self.root.audioManager.playFile('resources/buzzer.ogg')
+			#self.root.audioManager.playFile('resources/buzzer.ogg')
+			self.root.audioManager.playBuzzer()
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
 			return
 		else:
