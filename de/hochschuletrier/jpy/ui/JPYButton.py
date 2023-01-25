@@ -28,6 +28,7 @@ class JPYButton(Frame):
 			width=Constants.SCREENW / 6 + 1,
 			height=Constants.SCREENH / 7 + 1
 		)
+
 		self.innerButton()
 
 	def innerButton(self):
@@ -64,17 +65,17 @@ class JPYButton(Frame):
 		self.button["text"] = questionText
 		self.master.overlayManager.overlays[0].text.set(event.widget.master.questionText)
 
-		self.logger.prompt("Frage: " + self.root.questionManager.answers[self.qCategory.name][self.questionID[1]])
+		self.logger.prompt("Frage: " + str(self.root.questionManager.answers[self.qCategory.name][self.questionID[1]]))
 		if event.widget.master.category == "image":
 			self.button["text"] = "Bild"
 			directory = self.master.root.questionManager.questiondir
-			self.master.overlayManager.overlays[0].setimage("questions/" + directory + "/" + questionText)
+			self.master.overlayManager.overlays[0].setimage("questions/" + str(directory) + "/" + questionText.decode("ascii"))
 		elif event.widget.master.category == "audio":
 			self.master.overlayManager.overlays[0].delimage()
 			self.button["text"] = "Audio"
 			self.master.overlayManager.overlays[0].text.set("Audio")
 			directory = self.master.root.questionManager.questiondir
-			self.master.overlayManager.overlays[0].setAudio("questions/" + directory + "/" + questionText)
+			self.master.overlayManager.overlays[0].setAudio("questions/" + directory + "/" + questionText.decode("ascii"))
 			time.sleep(1)
 			self.master.overlayManager.overlays[0].playAudio()
 		else:
