@@ -59,8 +59,7 @@ class UsernameOverlay(Overlay):
 		self.button.pack()
 
 	def save(self, event=""):
-		self.logger.prompt("User " + str(
-			self.user.id) + " changed name from '" + self.user.name.get() + "' to '" + self.field.get() + "'")
+		self.logger.prompt("User " + str(self.user.id) + " changed name from '" + self.user.name.get() + "' to '" + self.field.get() + "'")
 		self.user.name.set(self.field.get())
 		self.hide(self)
 		InputController.blockBuzzer = False
