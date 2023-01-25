@@ -3,10 +3,6 @@ import sys
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 from de.hochschuletrier.jpy.input.InputController import InputController
 
-
-#
-
-
 class BuzzerInputController(InputController):
 	def __init__(self, root):
 		if not (root.debug):

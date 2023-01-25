@@ -4,7 +4,7 @@ from de.hochschuletrier.jpy.input.InputController import InputController
 from de.hochschuletrier.jpy.Constants import Fonts, Constants
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
-from Tkinter import Label, Entry, Button, END
+from tkinter import Label, Entry, Button, END
 
 
 class DoubleOverlay(Overlay):

@@ -1,5 +1,5 @@
 __author__ = 'miko'
-from Tkinter import Tk
+from tkinter import Tk
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 
 

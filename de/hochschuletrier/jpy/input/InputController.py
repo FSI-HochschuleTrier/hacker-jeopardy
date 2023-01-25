@@ -1,6 +1,6 @@
 __author__ = 'miko'
 import sys
-from Tkinter import Tk
+from tkinter import Tk
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 
 
@@ -46,7 +46,7 @@ class InputController:
 	# warum ist hier das argument event?
 	# def pressedBuzzer(self, event, trigger):
 	def pressedBuzzer(self, trigger):
-		print 'blocked=', self.blockBuzzer
+		print('blocked=', self.blockBuzzer)
 		if InputController.blockBuzzer:
 			return
 		if self.root.gameStateManager.activeState == 0:

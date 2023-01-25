@@ -4,7 +4,7 @@ __author__ = 'miko'
 from de.hochschuletrier.jpy.Constants import Fonts
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
-from Tkinter import Label, Entry, Button, END
+from tkinter import Label, Entry, Button, END
 
 
 class UsernameOverlay(Overlay):

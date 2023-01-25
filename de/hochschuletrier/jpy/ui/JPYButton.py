@@ -1,7 +1,6 @@
 __author__ = 'miko'
 
-from Tkinter import *
-from tkFont import Font
+from tkinter import *
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 from de.hochschuletrier.jpy.input.InputController import InputController
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger

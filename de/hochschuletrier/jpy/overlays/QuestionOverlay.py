@@ -1,7 +1,7 @@
 __author__ = 'miko'
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
-from Tkinter import Label
+from tkinter import Label
 from PIL import Image, ImageTk
 
 

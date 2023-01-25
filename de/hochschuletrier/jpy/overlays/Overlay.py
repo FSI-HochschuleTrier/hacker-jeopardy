@@ -1,5 +1,5 @@
 __author__ = 'miko'
-from Tkinter import Frame, StringVar
+from tkinter import Frame, StringVar
 
 
 class Overlay(Frame):
