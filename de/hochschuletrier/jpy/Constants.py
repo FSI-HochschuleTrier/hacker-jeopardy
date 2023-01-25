@@ -1,12 +1,10 @@
 __author__ = 'miko'
 from tkinter import font
 
-
 class Constants:
 	SCREENW = 0
 	SCREENH = 0
 	COLORS = ["red", "green", "purple", "brown", "black", "yellow"]
-
 
 class Fonts:
 	MONEY_BIG = 0
