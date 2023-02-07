@@ -10,7 +10,7 @@ class StartGameState(GameState):
 	def __init__(self, *args, **kwargs):
 		GameState.__init__(self, *args, **kwargs)
 		if not os.path.exists("resources/opener_temp.png"):
-			image = Image.open("resources/opener.png")
+			image = Image.open("resources/opener.jpg")
 			image = image.resize((Constants.SCREENW, Constants.SCREENH), Image.ANTIALIAS)
 			image.save("resources/opener_temp.png", "png")
 			print("generated")
