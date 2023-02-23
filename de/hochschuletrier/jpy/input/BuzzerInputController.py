@@ -15,7 +15,7 @@ class BuzzerInputController(InputController):
 
 		if (root.debug):
 			return
-		GPIO.setmode(GPIO.BOARD)
+		GPIO.setmode(GPIO.BCM)
 
 		for channel in [25, 8, 7]:
 			GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
