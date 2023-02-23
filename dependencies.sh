@@ -1,15 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install python-dev
-sudo apt-get install python2.7
-if [ ! -d "mplayer" ]
-	then
-	git clone https://github.com/FSI-HochschuleTrier/mplayer.py.git
-	cd mplayer.py
-	mv mplayer ../mplayer
-	cd ..
-	sudo rm -rf mplayer.py
-fi
+sudo apt install ffmpeg
 
 git clone https://github.com/tylerwowen/RPIO.git
 cd RPIO
