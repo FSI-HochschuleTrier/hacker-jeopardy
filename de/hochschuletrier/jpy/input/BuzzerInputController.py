@@ -1,25 +1,26 @@
 __author__ = 'miko'
-import sys
+
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 from de.hochschuletrier.jpy.input.InputController import InputController
 
 class BuzzerInputController(InputController):
 	def __init__(self, root):
 		if not (root.debug):
-			import RPIO
+			import RPi.GPIO as GPIO
+
 		self.root = root
 		self.logger = JPYLogger(self)
 		self.logger.log("BuzzerInputController initialisiert")
 		self.blockBuzzer = False
-		mainWindow = root.mainWindow
 
 		if (root.debug):
 			return
-		RPIO.add_interrupt_callback(25, lambda x, y: self.pressedBuzzer(trigger=0), edge='rising',
-									pull_up_down=RPIO.PUD_UP)
-		RPIO.add_interrupt_callback(8, lambda x, y: self.pressedBuzzer(trigger=1), edge='rising',
-									pull_up_down=RPIO.PUD_UP)
-		RPIO.add_interrupt_callback(7, lambda x, y: self.pressedBuzzer(trigger=2), edge='rising',
-									pull_up_down=RPIO.PUD_UP)
+		GPIO.setmode(GPIO.BOARD)
 
-		RPIO.wait_for_interrupts(threaded=True)
+		for channel in [25, 8, 7]:
+			GPIO.setup(channel, GPIO.IN, initial=GPIO.HIGH)
+			GPIO.add_event_detect(channel, GPIO.RISING)
+
+		GPIO.add_event_callback(25, lambda: self.pressedBuzzer(trigger=0))
+		GPIO.add_event_callback(8, lambda: self.pressedBuzzer(trigger=1))
+		GPIO.add_event_callback(7, lambda: self.pressedBuzzer(trigger=2))
