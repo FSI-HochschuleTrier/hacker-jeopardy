@@ -1,6 +1,7 @@
 __author__ = 'miko'
 
 import pyglet
+import threading
 
 from tkinter import Tk
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
@@ -16,7 +17,13 @@ class MainWindow(Tk):
 		Constants.SCREENH = self.winfo_screenheight()
 		Fonts.construct()
 
-	def mainloop(self):
+	# pumping `pyglets`'s mainloop
+	def pump(self):
+		threading.Timer(0.1, self.pump).start()
 		pyglet.clock.tick()
 		pyglet.app.platform_event_loop.dispatch_posted_events()
-		return super().mainloop()
+	
+
+	def mainloop(self):
+		self.pump()
+		super().mainloop()
