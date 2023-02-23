@@ -33,12 +33,6 @@ class Jeopardy:
 		self.buzzerInputController = BuzzerInputController(self)
 		self.audioManager = AudioManager(self)
 
-		# pumping `pyglet`'s mainloop
-		if platform.system() != "Darwin":
-			audioThread = Thread(target=pyglet.app.run)
-			audioThread.start()
-
-
 		self.mainWindow.mainloop()
 
 def main(argv):

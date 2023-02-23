@@ -1,4 +1,7 @@
 __author__ = 'miko'
+
+import pyglet
+
 from tkinter import Tk
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 
@@ -12,3 +15,8 @@ class MainWindow(Tk):
 		Constants.SCREENW = self.winfo_screenwidth()
 		Constants.SCREENH = self.winfo_screenheight()
 		Fonts.construct()
+
+	def mainloop(self):
+		pyglet.clock.tick()
+		pyglet.app.platform_event_loop.dispatch_posted_events()
+		return super().mainloop()
