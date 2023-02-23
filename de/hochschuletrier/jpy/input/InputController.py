@@ -17,7 +17,7 @@ class InputController:
 
 	def startGame(self, event):
 		if InputController.introPlaying:
-			self.root.audioManager.stop("resources/intro.ogg")
+			self.root.audioManager.stop(None)
 			InputController.introPlaying = False
 		self.root.gameStarted = True
 		self.root.gameStateManager.changeState(1)
@@ -68,8 +68,9 @@ class InputController:
 				self.root.questionManager.candidate.color)
 			self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
 			InputController.blockBuzzer = True
-			self.root.audioManager.pause(self.root.audioManager.backgroundsong)
-			self.root.audioManager.playFile('resources/buzzer.ogg')
+			#self.root.audioManager.pause(None)
+			self.root.audioManager.pauseBackgroundSong()
+			self.root.audioManager.playBuzzer()
 
 	def endProgram(self, event):
 		if self.root.gameStateManager.activeState == 0:
@@ -92,7 +93,7 @@ class InputController:
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 			self.root.gameStateManager.states[1].overlayManager.overlays[2].hide(self)
 			if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
-				self.root.audioManager.stop(self.root.audioManager.backgroundsong)
+				self.root.audioManager.stopBackgroundSong()
 			return
 		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio != "":
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].playAudio()
@@ -106,7 +107,7 @@ class InputController:
 		# self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 		InputController.blockBuzzer = False
 		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
-			self.root.audioManager.resumeBackgroundSong()
+			self.root.audioManager.playBackgroundSong()
 
 	def addPoints(self, event):
 		if self.root.gameStateManager.activeState != 1:
@@ -129,4 +130,4 @@ class InputController:
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
 		InputController.blockBuzzer = False
-		self.root.audioManager.stop(self.root.audioManager.backgroundsong)
+		self.root.audioManager.stopBackgroundSong()
