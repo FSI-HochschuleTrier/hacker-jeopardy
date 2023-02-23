@@ -18,7 +18,7 @@ class BuzzerInputController(InputController):
 		GPIO.setmode(GPIO.BOARD)
 
 		for channel in [25, 8, 7]:
-			GPIO.setup(channel, GPIO.IN, initial=GPIO.HIGH)
+			GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 			GPIO.add_event_detect(channel, GPIO.RISING)
 
 		GPIO.add_event_callback(25, lambda: self.pressedBuzzer(trigger=0))
