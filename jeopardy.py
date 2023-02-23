@@ -3,6 +3,9 @@
 __author__ = 'MikO'
 
 import sys
+import pyglet
+import platform
+from threading import Thread
 from de.hochschuletrier.jpy.states.GameStateManager import GameStateManager
 from de.hochschuletrier.jpy.candidates.CandidateManager import CandidateManager
 from de.hochschuletrier.jpy.questions.QuestionManager import QuestionManager
@@ -29,6 +32,12 @@ class Jeopardy:
 		self.inputController = PseudoInputController(self)
 		self.buzzerInputController = BuzzerInputController(self)
 		self.audioManager = AudioManager(self)
+
+		# pumping `pyglet`'s mainloop
+		if platform.system() != "Darwin":
+			audioThread = Thread(target=pyglet.app.run)
+			audioThread.start()
+
 
 		self.mainWindow.mainloop()
 
