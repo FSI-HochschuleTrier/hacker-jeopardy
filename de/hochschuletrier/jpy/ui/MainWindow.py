@@ -1,11 +1,9 @@
 __author__ = 'miko'
 
 import pyglet
-import threading
 
 from tkinter import Tk
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
-
 
 class MainWindow(Tk):
 	def __init__(self, master, *args, **kwargs):
@@ -19,11 +17,10 @@ class MainWindow(Tk):
 
 	# pumping `pyglets`'s mainloop
 	def pump(self):
-		threading.Timer(0.1, self.pump).start()
 		pyglet.clock.tick()
 		pyglet.app.platform_event_loop.dispatch_posted_events()
 	
 
 	def mainloop(self):
-		self.pump()
+		self.after(300, self.pump)
 		super().mainloop()

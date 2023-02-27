@@ -33,15 +33,15 @@ class TableProcessor:
 					text = ""
 				JPYButton(
 					self.parent,
-					root=self.root,
-					question=self.root.questionManager.questions[self.root.questionManager.categories[col].name][row - 1],
-					text=text,
-					qCategory=self.root.questionManager.categories[col],
-					double=(True if count in self.root.questionManager.double else False),
-					worth=values[row - 1],
-					questionID=[col, row - 1],
-					borderwidth=1,
-					category=self.root.questionManager.categories[col].type,
+					root        = self.root,
+					question    = self.root.questionManager.questions[self.root.questionManager.categories[col].name][row - 1],
+					text        = text,
+					qCategory   = self.root.questionManager.categories[col],
+					double      = (True if count in self.root.questionManager.double else False),
+					worth       = values[row - 1],
+					questionID  = [col, row - 1],
+					borderwidth = 1,
+					category    = self.root.questionManager.categories[col].type,
 				).grid(row=row, column=col)
 
 	def buildCandidates(self):

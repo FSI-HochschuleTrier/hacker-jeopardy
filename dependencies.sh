@@ -9,5 +9,6 @@ cd ..
 sudo rm -rf RPIO
 sudo cp resources/swiss-911-ultra-compressed-bt.ttf /usr/share/fonts
 sudo cp splashscreen.service /etc/systemd/system/
+sudo cp resources/opener.png /etc/splashscreen.png
 
 sudo systemctl enable splashscreen.service
