@@ -22,4 +22,4 @@ else
 	debug=""
 fi
 
-sudo python jeopardy.py  "${SET[$choice]}" $debug
+python jeopardy.py  "${SET[$choice]}" $debug
