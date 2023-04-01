@@ -6,6 +6,7 @@ from de.hochschuletrier.jpy.input.InputController import InputController
 
 class PseudoInputController(InputController):
 	def __init__(self, root):
+		super().__init__(root)
 		self.root = root
 		self.logger = JPYLogger(self)
 		self.logger.log("PseudoInputController initialisiert")

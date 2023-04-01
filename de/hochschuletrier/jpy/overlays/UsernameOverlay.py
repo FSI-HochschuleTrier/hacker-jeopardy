@@ -62,7 +62,7 @@ class UsernameOverlay(Overlay):
 		self.logger.prompt("User " + str(self.user.id) + " changed name from '" + self.user.name.get() + "' to '" + self.field.get() + "'")
 		self.user.name.set(self.field.get())
 		self.hide(self)
-		InputController.blockBuzzer = False
+		self.root.root.inputController.releaseBuzzer()
 
 	def insert(self, user):
 		self.field.delete(0, END)
