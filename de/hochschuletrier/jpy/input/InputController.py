@@ -86,7 +86,7 @@ class InputController:
 			self.root.audioManager.playBuzzer()
 		return True
 
-	def endProgram(self, event):
+	def endProgram(self, event, _ = None):
 		if self.root.gameStateManager.activeState == 0:
 			return
 		sys.exit()

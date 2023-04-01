@@ -18,6 +18,7 @@ class BuzzerInputController(InputController):
 		if (root.debug):
 			return
 		GPIO.setmode(GPIO.BCM)
+		GPIO.setwarnings(False)
 
 		for buzzer in Buzzers:
 			GPIO.setup(buzzer.buzzerPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
