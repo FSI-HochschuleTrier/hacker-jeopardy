@@ -2,9 +2,11 @@ __author__ = 'miko'
 
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 from de.hochschuletrier.jpy.input.InputController import InputController
+from de.hochschuletrier.jpy.input.Buzzer import Buzzers
 
 class BuzzerInputController(InputController):
 	def __init__(self, root):
+		super().__init__(root)
 		if not (root.debug):
 			import RPi.GPIO as GPIO
 
@@ -16,11 +18,18 @@ class BuzzerInputController(InputController):
 		if (root.debug):
 			return
 		GPIO.setmode(GPIO.BCM)
+		GPIO.setwarnings(False)
 
-		for channel in [25, 8, 7]:
-			GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-			GPIO.add_event_detect(channel, GPIO.RISING)
+		for buzzer in Buzzers:
+			GPIO.setup(buzzer.buzzerPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+			GPIO.setup(buzzer.ledPin, GPIO.OUT)
 
-		GPIO.add_event_callback(25, lambda: self.pressedBuzzer(trigger=0))
-		GPIO.add_event_callback(8, lambda: self.pressedBuzzer(trigger=1))
-		GPIO.add_event_callback(7, lambda: self.pressedBuzzer(trigger=2))
+			GPIO.add_event_detect(buzzer.buzzerPin, GPIO.RISING)
+			GPIO.output(buzzer.ledPin, GPIO.LOW)
+			buzzer.addCallback(self.pressedBuzzer, GPIO)
+
+	def pressedBuzzer(self, trigger, GPIO):
+		shouldProceed = super().pressedBuzzer(trigger.player - 1)
+		if not shouldProceed:
+			return
+		GPIO.output(trigger.ledPin, GPIO.HIGH)	

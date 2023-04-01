@@ -15,10 +15,12 @@ class MainWindow(Tk):
 		Constants.SCREENH = self.winfo_screenheight()
 		Fonts.construct()
 
+
 	# pumping `pyglets`'s mainloop
 	def pump(self):
 		pyglet.clock.tick()
 		pyglet.app.platform_event_loop.dispatch_posted_events()
+		self.after(100, self.pump)
 	
 
 	def mainloop(self):

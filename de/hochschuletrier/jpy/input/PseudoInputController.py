@@ -1,11 +1,13 @@
 __author__ = 'miko'
 import sys
+import signal
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
 from de.hochschuletrier.jpy.input.InputController import InputController
 
 
 class PseudoInputController(InputController):
 	def __init__(self, root):
+		super().__init__(root)
 		self.root = root
 		self.logger = JPYLogger(self)
 		self.logger.log("PseudoInputController initialisiert")
@@ -26,3 +28,5 @@ class PseudoInputController(InputController):
 		mainWindow.bind("3", lambda event: self.pressedBuzzer(2))
 		mainWindow.bind("<Left>", self.root.gameStateManager.states[1].overlayManager.overlays[2].prevCandidate)
 		mainWindow.bind("<Right>", self.root.gameStateManager.states[1].overlayManager.overlays[2].nextCandidate)
+
+		signal.signal(signal.SIGINT, lambda x, y: mainWindow.quit())

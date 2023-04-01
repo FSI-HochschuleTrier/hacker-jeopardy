@@ -2,6 +2,7 @@ __author__ = 'miko'
 import sys
 from tkinter import Tk
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
+from de.hochschuletrier.jpy.input.Buzzer import ResetBuzzerLEDs
 
 
 class InputController:
@@ -12,6 +13,11 @@ class InputController:
 		self.root = root
 		self.logger = JPYLogger(self)
 		self.logger.log("Input controller initialisiert")
+		self.gpio = None
+
+		if not (root.debug):
+			import RPi.GPIO as GPIO
+			self.gpio = GPIO
 
 		mainWindow = root.mainWindow
 
@@ -43,14 +49,20 @@ class InputController:
 			trigger]
 		self.root.gameStateManager.states[1].overlayManager.showOverlay(1)
 
+	def releaseBuzzer(self):
+		InputController.blockBuzzer = False
+
+		if not self.root.debug and self.gpio != None:
+			ResetBuzzerLEDs(self.gpio)
+
 	# warum ist hier das argument event?
 	# def pressedBuzzer(self, event, trigger):
 	def pressedBuzzer(self, trigger):
-		print('blocked=', self.blockBuzzer)
+		#print('blocked=', InputController.blockBuzzer)
 		if InputController.blockBuzzer:
-			return
+			return False
 		if self.root.gameStateManager.activeState == 0:
-			return
+			return False
 		if not self.root.gameStarted:
 			# ENTER USERNAME SUBROUTINE
 			InputController.blockBuzzer = True
@@ -58,21 +70,23 @@ class InputController:
 			self.userName(trigger)
 			#self.root.audioManager.playFile('resources/buzzer.ogg')
 			self.root.audioManager.playBuzzer()
+			return True
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
-			return
+			return False
 		else:
+			InputController.blockBuzzer = True
 			self.root.audioManager.stopQuestion()
 			self.root.questionManager.candidate = self.root.candidateManager.candidates[trigger]
 			# self.root.gameStateManager.states[1].overlayManager.showOverlay(2)
 			self.root.gameStateManager.states[1].overlayManager.overlays[0].highlight(
 				self.root.questionManager.candidate.color)
 			self.logger.prompt("Candidate :: " + str(trigger) + " ::  pressed Buzzer")
-			InputController.blockBuzzer = True
 			#self.root.audioManager.pause(None)
 			self.root.audioManager.pauseBackgroundSong()
 			self.root.audioManager.playBuzzer()
+		return True
 
-	def endProgram(self, event):
+	def endProgram(self, event, _ = None):
 		if self.root.gameStateManager.activeState == 0:
 			return
 		sys.exit()
@@ -105,7 +119,7 @@ class InputController:
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].normalize()
 		# self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
-		InputController.blockBuzzer = False
+		self.releaseBuzzer()
 		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
 			self.root.audioManager.playBackgroundSong()
 
@@ -129,5 +143,5 @@ class InputController:
 		Tk.update(self.root.mainWindow)
 		self.root.questionManager.candidate = None
 		self.root.gameStateManager.states[1].overlayManager.overlays[0].hide(self)
-		InputController.blockBuzzer = False
+		self.releaseBuzzer()
 		self.root.audioManager.stopBackgroundSong()
