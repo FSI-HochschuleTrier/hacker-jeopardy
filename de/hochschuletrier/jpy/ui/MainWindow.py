@@ -5,7 +5,6 @@ import pyglet
 from tkinter import Tk
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 
-
 class MainWindow(Tk):
 	def __init__(self, master, *args, **kwargs):
 		Tk.__init__(self, *args, **kwargs)
@@ -25,5 +24,5 @@ class MainWindow(Tk):
 	
 
 	def mainloop(self):
-		self.after(100, self.pump)
+		self.after(300, self.pump)
 		super().mainloop()

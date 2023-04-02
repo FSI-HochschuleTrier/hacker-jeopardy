@@ -13,7 +13,8 @@ class PseudoInputController(InputController):
 		self.logger.log("PseudoInputController initialisiert")
 		self.blockBuzzer = False
 		mainWindow = root.mainWindow
-		mainWindow.bind("<Escape>", self.endProgram)
+		#mainWindow.bind("<Escape>", self.endProgram)
+		mainWindow.bind("<Control-c>", self.endProgram)
 		mainWindow.bind("<KP_0>", lambda event: self.test(event, 0))
 		mainWindow.bind("<KP_1>", lambda event: self.test(event, 1))
 		mainWindow.bind("<KP_2>", lambda event: self.test(event, 2))
