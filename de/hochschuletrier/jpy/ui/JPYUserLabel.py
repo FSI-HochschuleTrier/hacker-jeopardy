@@ -1,29 +1,25 @@
-from tkinter import *
+from tkinter import Frame, Label, BOTH, X
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 from math import *
 
 
 class JPYUserLabel(Frame):
-	def __init__(self, *args, **kwargs):
-		Frame.__init__(self, *args)
+	def __init__(self, parent, user, back, numPlayers):
+		super().__init__(parent)
 		self.label = ""
 		self.nLabel = ""
-		self.user = kwargs["user"]
+		self.numPlayers = numPlayers
+		self.user = user
 		self.nameFont = Fonts.USER_LABEL_NAME
 		self.pointsFont = Fonts.MONEY_MEDIUM
-		self.bgcolor = kwargs["back"]
-		self.width = len(self.master.root.candidateManager.candidates)
-		if self.width > 3:
-			self.width = 6
+		self.bgcolor = back
 		self.config(
-			width=Constants.SCREENW / self.width + 1,
 			height=Constants.SCREENH / 7,
 			background="black",
-			pady=5,
+			pady=7,
 			padx=5,
 			cursor="man"
 		)
-		self.pack_propagate(0)
 		self.pointsLabel()
 		self.nameLabel()
 
@@ -32,24 +28,23 @@ class JPYUserLabel(Frame):
 		self.nLabel.config(
 			textvariable=self.user.name,
 			background=self.bgcolor,
-			foreground="white",
+			foreground="#222",
 			bd=0,
 			relief="solid",
 			font=self.nameFont,
-			wraplength=Constants.SCREENW / self.width
+			wraplength=(Constants.SCREENW / self.numPlayers) / 2
 		)
-		self.nLabel.pack(fill=BOTH, expand=1)
+		self.nLabel.pack(fill=X, expand=False)
 
 	def pointsLabel(self):
 		self.label = Label(self)
-		# self.label.bind("<Button-1>", self.edit.show(self.user))
 		self.label.config(
 			textvariable=self.user.points,
 			background=self.bgcolor,
-			foreground="white",
+			foreground="#222",
 			bd=0,
 			relief="solid",
 			font=self.pointsFont,
-			wraplength=Constants.SCREENW / self.width
+			wraplength=(Constants.SCREENW / self.numPlayers) / 2
 		)
-		self.label.pack(fill=BOTH, expand=1)
+		self.label.pack(fill=BOTH, expand=True)
