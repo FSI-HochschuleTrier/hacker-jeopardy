@@ -85,7 +85,7 @@ class JPYButton(Frame):
 		if not self.master.root.audioManager.playingBackground() and event.widget.master.category != "audio":
 			self.master.root.audioManager.playBackgroundSong()
 		if self.master.overlayManager.overlays[2].settedPoints != 0:
-			self.master.root.audioManager.resumeBackgroundSong()
+			self.master.root.audioManager.playBackgroundSong()
 
 	def processOverlay(self):
 		self.button["text"] = ""
