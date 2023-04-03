@@ -10,10 +10,11 @@ from tkinter import Label, Entry, Button, END
 class UsernameOverlay(Overlay):
 	def __init__(self, *args, **kwargs):
 		Overlay.__init__(self, *args, **kwargs)
-		self.label = ""
-		self.field = ""
-		self.button = ""
-		self.user = ""
+		self.label = None
+		self.field = None
+		self.button = None
+		self.user = None
+		self.spacer = None
 		self.logger = JPYLogger(self)
 		self.config(
 			background="gold",
@@ -46,7 +47,7 @@ class UsernameOverlay(Overlay):
 		self.field.pack()
 
 	def renderButton(self):
-		Label(self, text='\n', background="gold").pack()
+		self.spacer = Label(self, text='\n', background="gold").pack()
 		self.button = Button(self)
 		self.button.config(
 			text="OK",
@@ -67,6 +68,7 @@ class UsernameOverlay(Overlay):
 	def insert(self, user):
 		self.config(bg=user.color)
 		self.label.config(bg=user.color)
+		self.spacer.config(bg=user.color)
 		self.button.config(fg=user.color)
 		self.field.delete(0, END)
 		self.field.insert(0, user.name.get())
