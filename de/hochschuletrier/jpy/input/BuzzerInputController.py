@@ -12,12 +12,26 @@ class PushButton:
 	pin    : int
 	button : Button
 
-	def registerCallback(self, GPIO):
+	def registerCallback(self, GPIO, controller):
+		self.controller = controller
 		GPIO.add_event_callback(self.pin, lambda _: self.press())
 
 	@debounce(0.3)
 	def press(self):
-		print("BUTTON:", self.button)
+		if self.button == Button.RED:
+			self.controller.root.gameStateManager.states[1].overlayManager.overlays[2].prevCandidate()
+			self.controller.subPoints()
+			if not self.controller.root.gameStarted:
+				if self.controller.root.gameStateManager.activeState == 0:
+					self.controller.root.gameStateManager.changeState(1)
+				elif self.controller.root.gameStateManager.activeState == 1:
+					self.controller.root.gameStateManager.changeState(0)
+		elif self.button == Button.GREEN:
+			self.controller.root.gameStateManager.states[1].overlayManager.overlays[2].nextCandidate()
+			self.controller.addPoints()
+			self.controller.intro()
+		elif self.button == Button.BLACK:
+			self.controller.startGame()
 
 class BuzzerInputController(InputController):
 	Buttons = [
@@ -44,7 +58,7 @@ class BuzzerInputController(InputController):
 		for button in BuzzerInputController.Buttons:
 			GPIO.setup(button.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 			GPIO.add_event_detect(button.pin, GPIO.RISING)
-			button.registerCallback(GPIO)
+			button.registerCallback(GPIO, self)
 
 		for buzzer in Buzzers:
 			GPIO.setup(buzzer.buzzerPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
