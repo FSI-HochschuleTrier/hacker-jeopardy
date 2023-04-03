@@ -50,6 +50,7 @@ class JPYButton(Frame):
 		if not self.master.root.gameStarted:
 			return
 		if self.double:
+			self.logger.prompt("Double Jeopardy! [" + str(self.worth)  + " - " + str(2 * self.worth) +  "]")
 			self.doubleJeopardy(event)
 		else:
 			self.root.gameStateManager.states[1].overlayManager.overlays[2].hide(self)
@@ -69,13 +70,13 @@ class JPYButton(Frame):
 		if event.widget.master.category == "image":
 			self.button["text"] = "Bild"
 			directory = self.master.root.questionManager.questiondir
-			self.master.overlayManager.overlays[0].setimage("questions/" + str(directory) + "/" + questionText.decode("ascii"))
+			self.master.overlayManager.overlays[0].setimage("questions/" + str(directory) + "/" + questionText)
 		elif event.widget.master.category == "audio":
 			self.master.overlayManager.overlays[0].delimage()
 			self.button["text"] = "Audio"
 			self.master.overlayManager.overlays[0].text.set("Audio")
 			directory = self.master.root.questionManager.questiondir
-			self.master.overlayManager.overlays[0].setAudio("questions/" + directory + "/" + questionText.decode("ascii"))
+			self.master.overlayManager.overlays[0].setAudio("questions/" + directory + "/" + questionText)
 			time.sleep(1)
 			self.master.overlayManager.overlays[0].playAudio()
 		else:
