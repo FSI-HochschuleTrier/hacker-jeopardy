@@ -14,7 +14,7 @@ from de.hochschuletrier.jpy.audio.AudioManager import AudioManager
 
 
 class Jeopardy:
-	def __init__(self, questiondir, debug = ""):
+	def __init__(self, questiondir, numPlayers, debug = ""):
 		if (debug == "debug"):
 			self.debug = True
 		else:
@@ -24,7 +24,7 @@ class Jeopardy:
 		self.backupManager = BackupManager(self)
 		# self.questionManager = QuestionManager(self, "questions.json")
 		self.questionManager = QuestionManager(self, questiondir)
-		self.candidateManager = CandidateManager(self)
+		self.candidateManager = CandidateManager(self, numPlayers)
 		self.gameStateManager = GameStateManager(self)
 		self.inputController = PseudoInputController(self)
 		self.buzzerInputController = BuzzerInputController(self)
@@ -32,12 +32,15 @@ class Jeopardy:
 
 		self.mainWindow.mainloop()
 
-def main(argv):
-	if (len(argv) > 2):
-		main = Jeopardy(argv[1], argv[2])
-	else:
-		main = Jeopardy(argv[1])
+def main(argc, argv):
+	players = 4
+	debug   = ""
+	if argc > 2:
+		players = int(argv[2])
+		if argc > 3:
+			debug = argv[3]
+	main = Jeopardy(argv[1], players, debug)
 
 
 if __name__ == '__main__':
-	main(sys.argv)
+	main(len(sys.argv), sys.argv)

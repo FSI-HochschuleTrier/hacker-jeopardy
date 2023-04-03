@@ -4,7 +4,14 @@ from tkinter import font
 class Constants:
 	SCREENW = 0
 	SCREENH = 0
-	COLORS = ["red", "green", "purple", "brown", "black", "yellow"]
+	COLORS = [
+		"#f92672",
+		"#a6e22e",
+		"#66d9ef",
+		"#ae81ff",
+		"#fd971f",
+		"#ffd866"
+	]
 
 class Fonts:
 	MONEY_BIG = 0

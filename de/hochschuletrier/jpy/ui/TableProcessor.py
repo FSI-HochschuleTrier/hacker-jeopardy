@@ -4,11 +4,16 @@ from de.hochschuletrier.jpy.ui.JPYUserLabel import JPYUserLabel
 from de.hochschuletrier.jpy.ui.JPYButton import JPYButton
 from math import ceil
 from de.hochschuletrier.jpy.jason.JSONHandler import JSONHandler
+from tkinter import LEFT, BOTH, Frame, EW
 
+class UserBar(Frame):
+	def __init__(self, parent, root):
+		super().__init__(parent, bg="green")
+		self.root = root
 
 class TableProcessor:
 	cols = 6
-	rows = 6
+	rows = 7
 
 	def __init__(self, parent, root):
 		self.root = root
@@ -45,16 +50,11 @@ class TableProcessor:
 				).grid(row=row, column=col)
 
 	def buildCandidates(self):
-		col = 0
 		max = len(self.root.candidateManager.candidates)
-		span = int(ceil(6 / max))
+		userBar = UserBar(self.parent, self.root)
 
 		for candidate in self.root.candidateManager.candidates:
-			cLabel = JPYUserLabel(self.parent, back=candidate.color, user=candidate)
-			cLabel.grid(row=6, column=col, columnspan=span)
-			col += span
+			cLabel = JPYUserLabel(parent = userBar, back=candidate.color, user=candidate, numPlayers = max)
+			cLabel.pack(side=LEFT, expand=True, fill=BOTH)
 
-		if span == 1:
-			for empty in range(6 - len(self.root.candidateManager.candidates)):
-				JPYLabel(self.parent, background="black", text="").grid(row=6, column=len(
-					self.root.candidateManager.candidates) + empty)
+		userBar.grid(row=6, column=0, columnspan=6, sticky=EW)

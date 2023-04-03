@@ -65,5 +65,8 @@ class UsernameOverlay(Overlay):
 		self.root.root.inputController.releaseBuzzer()
 
 	def insert(self, user):
+		self.config(bg=user.color)
+		self.label.config(bg=user.color)
+		self.button.config(fg=user.color)
 		self.field.delete(0, END)
 		self.field.insert(0, user.name.get())
