@@ -47,7 +47,7 @@ class UsernameOverlay(Overlay):
 		self.field.pack()
 
 	def renderButton(self):
-		self.spacer = Label(self, text='\n', background="gold").pack()
+		self.spacer = Label(self, text='\n', background="gold")
 		self.button = Button(self)
 		self.button.config(
 			text="OK",
@@ -57,6 +57,7 @@ class UsernameOverlay(Overlay):
 			font=Fonts.MONEY_MEDIUM,
 			command=self.save
 		)
+		self.spacer.pack()
 		self.button.pack()
 
 	def save(self, event=""):
