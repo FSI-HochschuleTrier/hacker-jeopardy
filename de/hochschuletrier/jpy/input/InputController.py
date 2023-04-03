@@ -21,14 +21,14 @@ class InputController:
 
 		mainWindow = root.mainWindow
 
-	def startGame(self, event):
+	def startGame(self, event = None):
 		if InputController.introPlaying:
 			self.root.audioManager.stop(None)
 			InputController.introPlaying = False
 		self.root.gameStarted = True
 		self.root.gameStateManager.changeState(1)
 
-	def intro(self, event):
+	def intro(self, event = None):
 		if self.root.gameStateManager.activeState != 0:
 			return
 		# VIDEO IS WORKING!
@@ -94,9 +94,9 @@ class InputController:
 	def test(self, event, trigger):
 		self.root.gameStateManager.changeState(trigger)
 
-	def subPoints(self, event):
-		self.logger.prompt(str(self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints))
-		self.logger.prompt(str(self.root.questionManager.candidate is None))
+	def subPoints(self, event = None):
+		#self.logger.prompt(str(self.root.gameStateManager.states[1].overlayManager.overlays[2].settedPoints))
+		#self.logger.prompt(str(self.root.questionManager.candidate is None))
 
 		if self.root.gameStateManager.activeState != 1:
 			return
@@ -123,7 +123,7 @@ class InputController:
 		if self.root.gameStateManager.states[1].overlayManager.overlays[0].audio == "":
 			self.root.audioManager.playBackgroundSong()
 
-	def addPoints(self, event):
+	def addPoints(self, event = None):
 		if self.root.gameStateManager.activeState != 1:
 			return
 		if not self.root.gameStateManager.states[1].overlayManager.overlays[0].isVisible:
