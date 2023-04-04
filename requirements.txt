@@ -1,0 +1,4 @@
+Pillow==9.4.0
+RPi.GPIO==0.7.1
+pyglet==1.5.15
+tk==0.1.0

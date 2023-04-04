@@ -1,5 +1,5 @@
 __author__ = 'miko'
-from Tkinter import Frame
+from tkinter import Frame
 
 
 class GameState(Frame):

@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 from de.hochschuletrier.jpy.Constants import Constants, Fonts
 
 

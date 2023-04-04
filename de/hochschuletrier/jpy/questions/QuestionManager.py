@@ -5,18 +5,18 @@ from de.hochschuletrier.jpy.jason.JSONBackupHandler import JSONBackupHandler
 
 class QuestionManager:
 	def __init__(self, master, questiondir):
-		self.master = master
-		self.questiondir = questiondir
-		self.questions = {}
-		self.answers = {}
-		self.double = []
+		self.master       = master
+		self.questiondir  = questiondir
+		self.questions    = {}
+		self.answers      = {}
+		self.double       = []
 		self.toggledouble = False
-		self.questionSet = []
-		self.categories = []
-		self.candidate = None
-		self.worth = 0
-		self.lastButton = ""
-		self.usebackup = self.master.backupManager.usebackup
+		self.questionSet  = []
+		self.categories   = []
+		self.candidate    = None
+		self.worth        = 0
+		self.lastButton   = ""
+		self.usebackup    = self.master.backupManager.usebackup
 
 		self.requestData()
 		if self.usebackup:

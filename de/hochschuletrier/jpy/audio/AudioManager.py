@@ -1,40 +1,58 @@
-from mplayer import Player, CmdPrefix
+import pyglet
 
 class AudioManager:
 	def __init__(self, root):
-		self.root = root
-		# Set default prefix for all Player instances
-		Player.cmd_prefix = CmdPrefix.PAUSING_KEEP
-		self.backgroundsong = 'resources/Jeopardy.ogg'
-		self.player = {}
-		self.player[self.backgroundsong] = Player()
-		self.player["question"]	= Player()
-                self.buzz = Player()
-                self.buzz.loadfile("resources/buzzer.ogg")
+		self.root   = root
+		self.songs  = {
+			"question"   : None,
+			"background" : pyglet.media.load("resources/Jeopardy.ogg")
+		}
+		self.player     = pyglet.media.Player()
+		self.background = pyglet.media.Player()
+		self.buzzer     = pyglet.media.load("resources/buzzer.ogg", streaming=False)
 
-        def playBuzzer(self):
-            self.buzz.play()
-
-	def playQuestion(self, url):
-		self.player["question"] = Player(url)
-
-	def stopQuestion(self):
-		self.player["question"] = Player()
+		self.background.queue(self.songs["background"])
 
 	def playFile(self, url):
-		self.player[url] = Player(args=("-fs", url))
+		if not url in self.songs:
+			self.songs[url] = pyglet.media.load(url)
+		self.player.queue(self.songs[url])
+		if self.player.playing:
+			self.player.next_source()
+		else:
+			self.player.play()
+
+	def stop(self, _):
+		wasPlaying = self.player.playing
+		self.player.pause()
+		self.player.seek(0)
+
+		if wasPlaying:
+			self.player.next_source()
+
+	def pause(self, _):
+		self.player.pause() 
+
+	def playBuzzer(self):
+		self.buzzer.play()
 
 	def playBackgroundSong(self):
-		self.playFile(self.backgroundsong)
+		self.background.play()
 
-	def resumeBackgroundSong(self):
-		self.pause(self.backgroundsong)
+	def pauseBackgroundSong(self):
+		self.background.pause();
 
-	def pause(self, url):
-		self.player[url].pause()
+	def stopBackgroundSong(self):
+		self.background.pause()
+		self.background.seek(0)
 
-	def stop(self, url):
-		self.player[url] = Player()
+	def playQuestion(self, url):
+		self.songs["question"] = pyglet.media.load(url)
+		self.playFile("question")
+
+	def stopQuestion(self):
+		self.stop(None)
+	
 
 	def playingBackground(self):
-		return (not self.player[self.backgroundsong].paused) and self.player[self.backgroundsong].filename == 'Jeopardy.ogg'
+		return self.player.playing and self.player.source == self.songs["background"]

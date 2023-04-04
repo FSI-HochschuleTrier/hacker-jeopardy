@@ -1,0 +1,10 @@
+[Unit]
+Description=Splashscreen
+DefaultDependencies=yes
+
+[Service]
+ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose -a /etc/splashscreen.png
+
+[Install]
+WantedBy=sysinit.target shutdown.target 
+

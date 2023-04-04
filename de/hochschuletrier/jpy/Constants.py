@@ -1,12 +1,17 @@
 __author__ = 'miko'
-from tkFont import Font
-
+from tkinter import font
 
 class Constants:
 	SCREENW = 0
 	SCREENH = 0
-	COLORS = ["red", "green", "purple", "brown", "black", "yellow"]
-
+	COLORS = [
+		"#f92672",
+		"#a6e22e",
+		"#66d9ef",
+		"#ae81ff",
+		"#fd971f",
+		"#ffd866"
+	]
 
 class Fonts:
 	MONEY_BIG = 0
@@ -19,13 +24,13 @@ class Fonts:
 
 	@staticmethod
 	def construct():
-		Fonts.USER_LABEL_NAME = Font(family="Ubuntu", size=Fonts.sizing(18), weight="normal")
-		Fonts.USER_LABEL_NAME_BIG = Font(family="Ubuntu", size=Fonts.sizing(30), weight="normal")
-		Fonts.MONEY_BIG = Font(family="Swiss911 UCm BT", size=Fonts.sizing(65), weight="normal")
-		Fonts.MONEY_SMALL = Font(family="Swiss911 UCm BT", size=Fonts.sizing(20), weight="normal")
-		Fonts.SYSTEM_BIG = Font(family="Times New Roman", size=Fonts.sizing(45), weight="normal")
-		Fonts.SYSTEM_REGULAR = Font(family="Times New Roman", size=Fonts.sizing(25), weight="normal")
-		Fonts.MONEY_MEDIUM = Font(family="Swiss911 UCm BT", size=Fonts.sizing(38), weight="normal")
+		Fonts.USER_LABEL_NAME = font.Font(family="Ubuntu", size=Fonts.sizing(18), weight="normal")
+		Fonts.USER_LABEL_NAME_BIG = font.Font(family="Ubuntu", size=Fonts.sizing(30), weight="normal")
+		Fonts.MONEY_BIG = font.Font(family="Swiss911 UCm BT", size=Fonts.sizing(65), weight="normal")
+		Fonts.MONEY_SMALL = font.Font(family="Swiss911 UCm BT", size=Fonts.sizing(20), weight="normal")
+		Fonts.SYSTEM_BIG = font.Font(family="Times New Roman", size=Fonts.sizing(45), weight="normal")
+		Fonts.SYSTEM_REGULAR = font.Font(family="Times New Roman", size=Fonts.sizing(25), weight="normal")
+		Fonts.MONEY_MEDIUM = font.Font(family="Swiss911 UCm BT", size=Fonts.sizing(38), weight="normal")
 
 	@staticmethod
 	def sizing(percentage):

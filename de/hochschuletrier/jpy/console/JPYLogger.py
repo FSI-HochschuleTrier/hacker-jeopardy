@@ -7,10 +7,10 @@ class JPYLogger:
 		self.color = self.getColor()
 
 	def log(self, message):
-		print self.__class__.__name__ + "[LOG] >> " + self.caller + "\t--  " + message
+		print(self.__class__.__name__ + "[LOG] >> " + self.caller + "\t--  " + message)
 
 	def prompt(self, message):
-		print self.color + self.__class__.__name__ + "[GAMEINFO] >> " + self.caller + "\t--  " + message + "\033[0m"
+		print(self.color + self.__class__.__name__ + "[GAMEINFO] >> " + self.caller + "\t--  " + message + "\033[0m")
 
 	def getColor(self):
 		if self.caller == "BackupManager":

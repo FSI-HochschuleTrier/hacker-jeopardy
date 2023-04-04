@@ -1,19 +1,27 @@
 #!/bin/bash
 
-export DISPLAY=:0.0
+export DISPLAY=":0"
 xhost +
 
-SET=($(ls questions))
-I=0
+ITEMS=""
 
-for set in "${SET[@]}"
+for set in $(ls questions)
 do
-	echo "$I: $set"
-	I=$(($I + 1))
+	ITEMS="$ITEMS $set ."
 done
-echo
-echo "Bitte Fragenset auswählen:"
-read choice
+
+selected=$(dialog --menu "Bitte Antwortenset auswählen" 10 40 10 $ITEMS  3>&1 1>&2 2>&3)
+dialog --clear
+
+if [ "$selected" == "" ]; then
+	exit 1
+fi
+
+players=$(dialog --inputbox "Anzahl der Spieler?" 5 40 "4" 3>&1 1>&2 2>&3)
+
+if [ "$players" == "" ]; then
+	exit 1
+fi
 
 if [ "$1" == "debug" ]
 then
@@ -22,4 +30,7 @@ else
 	debug=""
 fi
 
-sudo python jeopardy.py  "${SET[$choice]}" $debug
+echo "Set '$selected' ausgewählt. Starte Jeopardy mit $players Spielern..."
+echo
+
+python jeopardy.py "$selected" $players $debug

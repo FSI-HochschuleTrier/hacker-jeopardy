@@ -1,6 +1,9 @@
-*.pyc
 .idea
-mplayer
+.vscode
+.DS_Store
+
+*.pyc
 candidates_backup.json
+questions_backup.json
 resources/opener_temp.png
 questions/*

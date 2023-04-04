@@ -4,7 +4,7 @@ from de.hochschuletrier.jpy.input.InputController import InputController
 from de.hochschuletrier.jpy.Constants import Fonts, Constants
 from de.hochschuletrier.jpy.overlays.Overlay import Overlay
 from de.hochschuletrier.jpy.console.JPYLogger import JPYLogger
-from Tkinter import Label, Entry, Button, END
+from tkinter import Label, Entry, Button, END
 
 
 class DoubleOverlay(Overlay):
@@ -82,7 +82,7 @@ class DoubleOverlay(Overlay):
 		self.hide(self)
 		self.caller.activateQuestion(self.oldEvent)
 
-	def nextCandidate(self, event):
+	def nextCandidate(self, event = None):
 		if self.isVisible:
 			numCandidates = len(self.master.root.candidateManager.candidates)
 			if (self.selectedCandidate + 1 < numCandidates):
@@ -93,7 +93,7 @@ class DoubleOverlay(Overlay):
 			self.highlight(self.root.root.questionManager.candidate.color)
 
 
-	def prevCandidate(self, event):
+	def prevCandidate(self, event = None):
 		numCandidates = len(self.master.root.candidateManager.candidates)
 		if self.isVisible:
 			if (self.selectedCandidate - 1 >= 0):

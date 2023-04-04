@@ -1,5 +1,5 @@
 __author__ = 'miko'
-from Tkinter import StringVar, IntVar
+from tkinter import StringVar, IntVar
 
 
 class Candidate(object):
